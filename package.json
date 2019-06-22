@@ -1,0 +1,28 @@
+{
+  "name": "yum-me",
+  "version": "1.0.0",
+  "description": "A food blog web app where Instagram meets Yelp",
+  "main": "server/index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/kayjayhogan/yum-me.git"
+  },
+  "author": "Kathleen Hogan, Ufuk Mehmetoglu, Matt Nguyen",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/kayjayhogan/yum-me/issues"
+  },
+  "homepage": "https://github.com/kayjayhogan/yum-me#readme",
+  "dependencies": {
+    "axios": "^0.19.0",
+    "express": "^4.17.1",
+    "mongodb": "^3.2.7",
+    "mongoose": "^5.6.0",
+    "node": "^12.4.0",
+    "react": "^16.8.6",
+    "react-dom": "^16.8.6"
+  }
+}
