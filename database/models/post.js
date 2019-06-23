@@ -1,30 +1,19 @@
 const mongoose = require('mongoose');
+const comment = require('./comment.js');
 
 const postSchema = new mongoose.Schema({
   restaurant: String,
   title: String,
   text: String,
-  images: [String],
-  rating: String,
+  image: String,
+  recommend: String,
   likes: Number,
-  createdAt: {
-    type: Date,
-    default: Date.now
-  },
+  createdAt: Date,
   author: {
-    id: {
-      type: mongoose.Schema.Types.ObjectId,
-      ref: "User"
-    },
     username: String,
     avatar: String
   },
-  comments: [
-    {
-      type: mongoose.Schema.Types.ObjectId,
-      ref: "Comment"
-    }
-  ]
+  comments: [comment.commentSchema]
 });
 
 const Post = mongoose.model('Post', postSchema);
