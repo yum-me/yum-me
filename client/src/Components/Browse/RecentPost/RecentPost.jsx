@@ -1,6 +1,5 @@
 import React from 'react';
 import './RecentPost.css';
-import { IoIosThumbsUp } from 'react-icons/io';
 import { FaCommentAlt, FaThumbsUp } from 'react-icons/fa';
 import moment from 'moment';
 
