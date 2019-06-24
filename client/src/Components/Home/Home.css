@@ -1,0 +1,55 @@
+body {
+  background-color: rgb(232, 239, 235);
+}
+
+.landing-container {
+  width: 70%;
+  min-width: 700px;
+  margin: 10vh auto;
+}
+
+.landing-img {
+  width: 100%;
+  margin: 0 auto;
+  display: block;
+}
+
+.landing-button-container {
+  width: 330px;
+  margin: 20px auto;
+}
+
+button {
+  margin: 20px 5px 30px 5px;
+}
+
+.button-main {
+  background-color: #3b1360;
+  border: 2px solid #3b1360;
+  color: white;
+  border-radius: 25px;
+  height: 50px;
+  width: 150px;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.button-main:hover {
+  background-color: #602993;   
+}
+
+.button-foil {
+  border: 2px solid #3b1360;
+  color: #3b1360;
+  border-radius: 25px;
+  height: 50px;
+  width: 150px;
+  font-size: 16px;
+  cursor: pointer;
+  background-color: transparent;
+}
+
+.button-foil:hover {
+  color: #602993;    
+  border-color: #602993;    
+}
