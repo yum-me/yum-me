@@ -60,7 +60,6 @@ module.exports = {
       });
     }
   },
-
   login: (req, res) => {
     const { email, password } = req.query;
     User.findOne({ email: email })
@@ -83,7 +82,6 @@ module.exports = {
       })
       .catch(err => res.status(404).send('Wrong email or passsword'))
   },
-
   restaurant: (req, res) => {
     
     const apiKey = 'GYdgrGkmsK1bgin4g0BlKGmwGHA7mlvJoge9b1X1tQma1pbkiyEkRmkwG4N6Q_2vu5hT7YYcHtO9Ul_WCMYicZFn-bvy6A3w3DO2PYUhJkB4QFDOXh3xujH6PGoNXXYx';
@@ -106,7 +104,6 @@ module.exports = {
       res.status(404).send('Error getting restaurants',err)
     });
   },
-
   writepost: (req, res) => {
     const { restaurant, title, text, images, likes, author, comments } = req.body;
     Post.create({restaurant, title, text, images, likes, author, comments})
