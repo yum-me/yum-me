@@ -1,5 +1,6 @@
 const User = require('../database/models/user')
 const Post = require('../database/models/post')
+const Comment = require('../database/models/comment')
 const bcrypt = require('bcryptjs');
 const passport = require('passport');
 const yelp = require('yelp-fusion');
@@ -139,6 +140,56 @@ module.exports = {
         }
       }); 
     }
+  },
+  //Show one post
+  getPost: (req, res) => {
+    const { _id } = req.query;
+    Post.find({_id})
+    .then(data => res.status(200).send(data))
+    .catch(err => res.status(404).send('Error with getPost', err))
+  }, 
+  //Get all posts of one username
+  getUserPosts: (req, res) => {
+    const { username } = req.query;
+    Post.find({'author.username': username})
+    .then(data => res.status(200).send(data))
+    .catch(err => res.status(404).send('Error with getUserPosts', err))
+  }, 
+  //Get all posts of people you are following
+  getFeed: (req, res) => {
+    const { username } = req.query;
+    User.find({username})
+    .then(data => {
+      const followingArr = data[0].following
+      return followingArr
+    })
+    .then((arr) => Post.find({'author.username': {$in: arr}}).sort({createdAt: -1 }))
+    // .limit(20)
+    .then(data => res.status(200).send(data))
+    .catch(err => res.status(404).send('Error with getFeed', err))
+  }, 
+  //Get user info
+  getUser: (req, res) => {
+    const { username } = req.query;
+    User.find({username})
+    .then(data => res.status(200).send(data))
+    .catch(err => res.status(404).send('Error with getUser', err))
+  },
+  //Upvote a post
+  upvote: (req, res) => {
+    const { _id } = req.query;
+    Post.findOneAndUpdate(_id, {$inc: {likes: 1}})
+    .then(response => res.status(200).send(response))
+    .catch(err => {res.status(400).send('Error liking post', err) });
+  },
+  //Adding a comment to a post
+  addComment: (req, res) => {
+    const { _id } = req.query;
+    const { text } = req.body; 
+    Comment.Comment.create({text: text, 'author.username': 'ufukmehmetoglu', 'author.avatar': 'https://avatars1.githubusercontent.com/u/43357768?s=460&v=4', createdAt: new Date()})
+    .then(comment => Post.findOneAndUpdate(_id, {$push: {'comments': comment}}))
+    .then(response => res.status(200).send(response))
+    .catch(err => {res.status(400).send('Error adding comment', err)});
   }
-
 }
+
