@@ -38,9 +38,13 @@ class RecentPost extends React.Component {
         <div className="post-card-details">
           <p><strong>Restaurant:</strong> {post.restaurant}</p>
           <div>
-            <span><FaThumbsUp /> {post.likes}</span>
-            <span><FaCommentAlt className="post-card-comment-icon"/> {post.comments.length}</span>
-            <p className="post-card-date">{dateDisplay}</p>
+            <div className="post-card-details-split">
+              <span><FaThumbsUp /> {post.likes}</span>
+              <span><FaCommentAlt className="post-card-comment-icon"/> {post.comments.length}</span>
+            </div>
+            <div className="post-card-details-split">
+              <p className="post-card-date">{dateDisplay}</p>
+            </div>
           </div>
         </div>
       </div>
