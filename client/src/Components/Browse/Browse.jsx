@@ -32,13 +32,9 @@ class Browse extends React.Component {
         <h1>Recent Posts</h1>
         <div className="browse-wrap">
           <div className="four-col-grid">
-            <div className="grid-item">Grid item</div>
-            <div className="grid-item">Grid item</div>
-            <div className="grid-item">Grid item</div>
-            <div className="grid-item">Grid item</div>
-            {/* {this.state.posts.map((post, i) => {
-              return <RecentPost key={i} post={post} />
-            })} */}
+            {this.state.posts.map((post, i) => {
+              return <div className="grid-item hvr-grow" key={i}><RecentPost post={post} /></div>               
+            })}
           </div>
         </div>
       </div>

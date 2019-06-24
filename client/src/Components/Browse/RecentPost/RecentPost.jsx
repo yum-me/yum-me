@@ -1,4 +1,8 @@
 import React from 'react';
+import './RecentPost.css';
+import { IoIosThumbsUp } from 'react-icons/io';
+import { FaCommentAlt, FaThumbsUp } from 'react-icons/fa';
+import moment from 'moment';
 
 class RecentPost extends React.Component {
   constructor(props) {
@@ -8,8 +12,38 @@ class RecentPost extends React.Component {
 
   render() {
     const post = this.props.post;
+    // handling date display
+    let todaysDate = new Date();
+    let reviewDate = new Date(post.createdAt);
+    let daysBetween = (todaysDate.getTime() - reviewDate.getTime())/(1000*60*60*24.0);
+    let dateDisplay;
+    //display date differently if within past 7 days
+    if (daysBetween <= 7) {
+      dateDisplay = moment(post.createdAt).fromNow();
+    } else {
+      dateDisplay = moment(post.createdAt).format("MMM Do, YYYY");
+    }
     return(
-      <div>I am a post by {post.author.username} titled {post.title}</div>
+      <div className="post-card">
+        <div className="post-card-user">
+          <img className="post-card-avatar" src={post.author.avatar}></img>
+          {/* INSERT USER PROFILE LINK BELOW */}
+          <a href="#">{post.author.username}</a>
+        </div>
+        <img className="post-card-img" src={post.image}></img>
+        <div className="post-card-description">
+          <h5>{post.title}</h5>
+          <p>{post.text.slice(0,100)}...</p>
+        </div>
+        <div className="post-card-details">
+          <p><strong>Restaurant:</strong> {post.restaurant}</p>
+          <div>
+            <span><FaThumbsUp /> {post.likes}</span>
+            <span><FaCommentAlt className="post-card-comment-icon"/> {post.comments.length}</span>
+            <p className="post-card-date">{dateDisplay}</p>
+          </div>
+        </div>
+      </div>
     );
   }
 }

@@ -8,13 +8,30 @@ h1 {
   margin-right: auto;
   margin-left: auto;
   box-sizing: border-box;
-  background: red;
+}
+
+.hvr-grow {
+  display: inline-block;
+  vertical-align: middle;
+  transform: translateZ(0);
+  backface-visibility: hidden;
+  -moz-osx-font-smoothing: grayscale;
+  transition-duration: 0.3s;
+  transition-property: transform;
+}
+
+.hvr-grow:hover,
+.hvr-grow:focus,
+.hvr-grow:active {
+  transform: scale(1.1);
+  position: relative;
+  z-index: 1000;
+  cursor: pointer;
 }
 
 /* MOBILE WIDTH */
 .four-col-grid .grid-item {
-  margin-top: 20px;
-  background: blue;
+  margin-bottom: 20px;
 }
 
 /* TABLET */
@@ -23,13 +40,8 @@ h1 {
     width: 45%;
     margin-left: 2.5%;
     margin-right: 2.5%;
-    margin-top: 20px;
+    margin-bottom: 20px;
     float: left;
-    background: blue;
-  }
-  .four-col-grid .grid-item:first-of-type,
-  .four-col-grid .grid-item:nth-of-type(2) {
-    margin-top: 0;
   }
 }
 
@@ -37,11 +49,8 @@ h1 {
 @media screen and (min-width: 1025px) {
   .four-col-grid .grid-item {
     width: 22.5%;
-    margin-left: 1.25%;
-    margin-right: 1.25%;
-    margin-top: 0;
+    margin: 0 1.25% 20px 1.25%;
     float: left;
-    background: blue;
   }
 }
 
