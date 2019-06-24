@@ -141,21 +141,21 @@ module.exports = {
       }); 
     }
   },
-  //Show one post
+  //Show one post, /post
   getPost: (req, res) => {
     const { _id } = req.query;
     Post.find({_id})
     .then(data => res.status(200).send(data))
     .catch(err => res.status(404).send('Error with getPost', err))
   }, 
-  //Get all posts of one username
+  //Get all posts of one username, /userPosts
   getUserPosts: (req, res) => {
     const { username } = req.query;
     Post.find({'author.username': username})
     .then(data => res.status(200).send(data))
     .catch(err => res.status(404).send('Error with getUserPosts', err))
   }, 
-  //Get all posts of people you are following
+  //Get all posts of people you are following, /feed
   getFeed: (req, res) => {
     const { username } = req.query;
     User.find({username})
@@ -168,21 +168,21 @@ module.exports = {
     .then(data => res.status(200).send(data))
     .catch(err => res.status(404).send('Error with getFeed', err))
   }, 
-  //Get user info
+  //Get user info, /user
   getUser: (req, res) => {
     const { username } = req.query;
     User.find({username})
     .then(data => res.status(200).send(data))
     .catch(err => res.status(404).send('Error with getUser', err))
   },
-  //Upvote a post
+  //Upvote a post, /post
   upvote: (req, res) => {
     const { _id } = req.query;
     Post.findOneAndUpdate(_id, {$inc: {likes: 1}})
     .then(response => res.status(200).send(response))
     .catch(err => {res.status(400).send('Error liking post', err) });
   },
-  //Adding a comment to a post
+  //Adding a comment to a post, /comment
   addComment: (req, res) => {
     const { _id } = req.query;
     const { text } = req.body; 

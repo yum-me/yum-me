@@ -20,7 +20,7 @@ router.route('/post')
   .get(controller.getPost)
   .post(controller.upvote)
   
-router.route('/userFeed')
+router.route('/userPosts')
   .get(controller.getUserPosts)
 
 router.route('/feed')
