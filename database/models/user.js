@@ -8,12 +8,7 @@ const userSchema = new mongoose.Schema({
   avatar: String,
   password: String,
   location: String,
-  following: [
-    {
-      type: mongoose.Schema.Types.ObjectId,
-      ref: "User"
-    }
-  ],
+  following: [String],
   followers: Number
 });
 
