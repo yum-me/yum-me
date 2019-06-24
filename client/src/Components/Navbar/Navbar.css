@@ -101,11 +101,10 @@ body {
     color: rgba(0, 0, 0, 0.7);
   }
 
-  /* TO-DO: figure out how to make this responsive */
   .nav-search-input-container {
     display: flex;
     margin: 12px;
-    width: 370px;
+    width: 220px;
     height: 36px;
     border-radius: 25px;
     float: left;
@@ -134,5 +133,11 @@ body {
     position: relative;
     width: 100%;
     display: flex;
+  }
+}
+
+@media screen and (min-width: 1025px) {
+  .nav-search-input-container {
+    width: 40%;
   }
 }

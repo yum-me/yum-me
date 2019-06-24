@@ -36,6 +36,7 @@ button {
 
 .button-main:hover {
   background-color: #602993;   
+  border-color: #602993;   
 }
 
 .button-foil {
