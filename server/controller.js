@@ -3,8 +3,14 @@ const Post = require('../database/models/post')
 const bcrypt = require('bcryptjs');
 const passport = require('passport');
 const yelp = require('yelp-fusion');
+const db = require('../database/index.js');
+
+let escapeRegex = (text) => {
+  return text.replace(/[-[\]{}()*+?.,\\^$|#\s]/g, "\\$&");
+};
 
 module.exports = {
+  
   register: (req, res) => {
     const { username, firstName, lastName, email, password, password2 } = req.body;
     console.log(req.body)
@@ -53,6 +59,7 @@ module.exports = {
       });
     }
   },
+
   login: (req, res) => {
     const { email, password } = req.query;
     User.findOne({ email: email })
@@ -75,6 +82,7 @@ module.exports = {
       })
       .catch(err => res.status(404).send('Wrong email or passsword'))
   },
+
   restaurant: (req, res) => {
     
     const apiKey = 'GYdgrGkmsK1bgin4g0BlKGmwGHA7mlvJoge9b1X1tQma1pbkiyEkRmkwG4N6Q_2vu5hT7YYcHtO9Ul_WCMYicZFn-bvy6A3w3DO2PYUhJkB4QFDOXh3xujH6PGoNXXYx';
@@ -97,10 +105,40 @@ module.exports = {
       res.status(404).send('Error getting restaurants',err)
     });
   },
+
   writepost: (req, res) => {
     const { restaurant, title, text, images, likes, author, comments } = req.body;
     Post.create({restaurant, title, text, images, likes, author, comments})
       .then(() => res.status(201).send('Succesfully posted'))
       .catch(err => res.status(404).send('Error posting',err))
+  },
+
+  findRecent: (req, res) => {
+    Post.find({})
+    .sort({ createdAt: -1 })
+    .limit(20)
+    .then(data => res.status(200).send(data))
+    .catch(err => res.status(404).send('Could not find recent posts: ', err));
+  },
+
+  search: (req, res) => {
+    if(req.query.term) {
+      const regex = new RegExp(escapeRegex(req.query.term), 'gi');
+      Post.find({ $or:[{ restaurant: regex }, { title: regex }] }, (err, foundPosts) => {
+        if(err) {
+          res.status(404).send(err);
+        } else {
+          User.find({ username: regex }, function(err, foundUsers) {
+            if(err) {
+              res.status(404).send(err)
+            } else {
+              let result = { foundPosts, foundUsers };
+              res.status(200).send(result);
+            }
+          });
+        }
+      }); 
+    }
   }
+
 }
