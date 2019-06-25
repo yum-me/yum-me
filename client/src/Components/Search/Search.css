@@ -1,14 +1,14 @@
-h1 {
+.search h1 {
   margin-left: 5%;
 }
 
-h2 {
+.search h2 {
   color: #3b1360;
   font-weight: normal;
   margin: 25px 0 25px 1.25%;
 }
 
-p {
+.result-p {
   margin-left: 1.25%;
   margin-bottom: 15px;
   color: rgba(0,0,0,0.5);
