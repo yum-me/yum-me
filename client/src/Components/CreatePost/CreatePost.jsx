@@ -72,6 +72,7 @@ class CreatePost extends React.Component {
 
   const response = await axios.post(
     `https://api.cloudinary.com/v1_1/${process.env.NAME}/image/upload`,
+
     formData
   );
     axios
@@ -106,7 +107,9 @@ class CreatePost extends React.Component {
     if(this.state.restaurants.length > 0 ? result=style2 : result=style1)
     return(
       <div>
+
         <form className="createForm" onSubmit ={this.handleSubmit} ref={form => this.form = form} >
+
           <h1>Create New Post</h1>
           <input className="createInput" type="text" name="title" placeholder="title" onChange={this.handleChange}/>
           <div className="createSearch">
@@ -116,6 +119,7 @@ class CreatePost extends React.Component {
           <input style={result} type="file" onChange ={this.handleUploadImage}/>
           <textarea className="createTextArea" rows="100" cols="100" name="text" placeholder="What is your story..."onChange={this.handleChange}></textarea>
           <input className="createSubmit" type="submit"  />
+
         </form>
       </div>
     )

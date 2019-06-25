@@ -29,7 +29,7 @@ class Browse extends React.Component {
     return(
       <div>
         <Navbar />
-        <h1>Recent Posts</h1>
+        <h1 className="browse-h1">Recent Posts</h1>
         <div className="browse-wrap">
           <div className="four-col-grid">
             {this.state.posts.map((post, i) => {
