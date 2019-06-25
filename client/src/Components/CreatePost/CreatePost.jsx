@@ -64,10 +64,10 @@ class CreatePost extends React.Component {
           </div>
           <input class="createFile" type="file" name="image" placeholder="title" />
           <textarea class="createTextArea" rows="100" cols="100" name="text" placeholder="What is your story..."onChange={this.handleChange}></textarea>
+          <input class="createSubmit" type="submit"  />
         </form>
       </div>
     )
-
   }
 }
 
