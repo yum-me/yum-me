@@ -1,7 +1,7 @@
 import React from 'react';
 import axios from 'axios';
 import Navbar from '../Navbar/Navbar.jsx';
-import RecentPost from './RecentPost/RecentPost.jsx';
+import PostCard from './PostCard/PostCard.jsx';
 import './Browse.css';
 
 class Browse extends React.Component {
@@ -29,11 +29,11 @@ class Browse extends React.Component {
     return(
       <div>
         <Navbar />
-        <h1>Recent Posts</h1>
+        <h1 className="browse-h1">Recent Posts</h1>
         <div className="browse-wrap">
           <div className="four-col-grid">
             {this.state.posts.map((post, i) => {
-              return <div className="grid-item hvr-grow" key={i}><RecentPost post={post} /></div>               
+              return <div className="grid-item hvr-grow" key={i}><PostCard post={post} /></div>               
             })}
           </div>
         </div>

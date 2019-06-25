@@ -1,4 +1,4 @@
-h1 {
+.browse-h1 {
   color: #3b1360;
   margin: 30px 60px;
 }
@@ -29,33 +29,37 @@ h1 {
   cursor: pointer;
 }
 
-/* MOBILE WIDTH */
+/* MOBILE */
+.four-col-grid {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
+}
+
 .four-col-grid .grid-item {
-  margin-bottom: 20px;
+  margin-bottom: 15px;
 }
 
 /* TABLET */
 @media screen and (min-width: 768px) {
+  .four-col-grid {
+    flex-direction: row;
+  }
+
   .four-col-grid .grid-item {
-    width: 45%;
+    flex-basis: 45%;
     margin-left: 2.5%;
     margin-right: 2.5%;
-    margin-bottom: 20px;
-    float: left;
+    margin-bottom: 15px;
   }
-}
+} 
 
 /* DESKTOP */
-@media screen and (min-width: 1025px) {
+@media screen and (min-width: 1025px) {  
   .four-col-grid .grid-item {
-    width: 22.5%;
-    margin: 0 1.25% 20px 1.25%;
-    float: left;
+    flex-basis: 22.5%;
+    margin-left: 1.25%;
+    margin-right: 1.25%;
+    margin-bottom: 15px;
   }
-}
-
-.four-col-grid:after {
-  display: table;
-  clear: both;
-  content: '';
 }
