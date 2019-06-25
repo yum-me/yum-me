@@ -12,7 +12,7 @@ class DropDownRestaurant extends React.Component {
 
   render() {
     return(
-      <div class="createDropDown">
+      <div className="createDropDown">
         {this.props.restaurants.map(restaurant => <Restaurant restaurant={restaurant} handlePickRestaurant={this.props.handlePickRestaurant}/>)}
       </div>
        

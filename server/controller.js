@@ -13,15 +13,15 @@ let escapeRegex = (text) => {
 module.exports = {
   
   register: (req, res) => {
-    const { username, firstName, lastName, email, password, password2 } = req.body;
+    const { username, firstName, lastName, email, password, password2, avatar, location } = req.body;
     console.log(req.body)
     let errors = [];
 
-    if (!username || !firstName || !lastName || !email || !password || !password2) {
+    if (!username || !firstName || !lastName || !email || !password || !password2 || !avatar, !location) {
       errors.push({ msg: 'Please enter all fields' });
     }
 
-    if (password != password2) {
+    if (password !== password2) {
       errors.push({ msg: 'Passwords do not match' });
     }
 
@@ -30,7 +30,7 @@ module.exports = {
     }
 
     if (errors.length > 0) {
-      res.status(200).send('Submit Everything Please')
+      res.status(404).send('Submit Everything Please')
     } else {
       User.findOne({ email: email }).then(user => {
         if (user) {
@@ -41,7 +41,9 @@ module.exports = {
             firstName,
             lastName,
             email,
-            password
+            password,
+            location,
+            avatar
           });
 
           bcrypt.genSalt(10, (err, salt) => {
