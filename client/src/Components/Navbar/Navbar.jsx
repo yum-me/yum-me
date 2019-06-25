@@ -15,6 +15,11 @@ class Navbar extends React.Component {
     this.handleSubmit = this.handleSubmit.bind(this);
   }
 
+  handleMenu() {
+    let mainNav = document.getElementById("js-menu");
+    mainNav.classList.toggle('active');
+  }
+
   handleChange(e) {
     this.setState({
       term: e.target.value
