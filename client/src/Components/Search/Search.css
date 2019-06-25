@@ -1,5 +1,10 @@
+.search {
+  padding-top: 100px;
+}
+
 .search h1 {
-  margin-left: 5%;
+  text-align: center;
+  color: #3b1360;
 }
 
 .search h2 {
@@ -36,7 +41,7 @@
 .hvr-grow:active {
   transform: scale(1.1);
   position: relative;
-  z-index: 1000;
+  z-index: 50;
   cursor: pointer;
 }
 

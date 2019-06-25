@@ -61,25 +61,27 @@ class Search extends React.Component {
     let posts = this.state.posts.length === 1 ? "post" : "posts";
 
     return(
-      <div className="search">
+      <div>
         {/* HOW TO HANDLE THIS WITH ALL OTHER COMPONENTS USING NAV??? */}
         <Navbar handleSearch={(term) => this.handleSearch(term)}/>
-        <h1>Search Results for "{this.state.term}"</h1>
-        <div className="search-user-container">
-          {/* USERS */}
-          <div className="browse-wrap">
-            <h2><strong>{this.state.users.length}</strong> {users}</h2>
-            <div className="col-grid">
-              {userList}
+        <div className="search">
+          <h1>Search Results for "{this.state.term}"</h1>
+          <div className="search-user-container">
+            {/* USERS */}
+            <div className="browse-wrap">
+              <h2><strong>{this.state.users.length}</strong> {users}</h2>
+              <div className="col-grid">
+                {userList}
+              </div>
             </div>
           </div>
-        </div>
-        <div>
-          {/* POSTS */}
-          <div className="browse-wrap">
-            <h2><strong>{this.state.posts.length}</strong> {posts}</h2>
-            <div className="col-grid">
-              {postList}
+          <div>
+            {/* POSTS */}
+            <div className="browse-wrap">
+              <h2><strong>{this.state.posts.length}</strong> {posts}</h2>
+              <div className="col-grid">
+                {postList}
+              </div>
             </div>
           </div>
         </div>
