@@ -1,0 +1,47 @@
+.feed-main {
+  display: flex;
+}
+
+
+.user-info {
+ width: 30vw;
+ height: 60vh;
+ background-color: red;
+ text-align: center;
+}
+
+.user-info-inner {
+  padding-top: 10%;
+  display: inline-block;
+}
+
+.feed-post-main {
+  width: 70vw;
+  /* padding-left: 2%; */
+  /* height: 60vh;
+  background-color: blue; */
+}
+
+.avatar-photo {
+  width: 40%;
+  /* height: 40; */
+  border-radius: 50%;
+  vertical-align: middle;
+  margin-bottom: 3%;
+  /* padding-bottom: 5%; */
+}
+
+.feed-post {
+  border: 1px solid black;
+  padding: 2%;
+}
+
+.post-image {
+  width: 10vw;
+  height: 10vh;
+}
+
+.post-detail {
+  display: flex;
+  padding-top: 1%;
+}
