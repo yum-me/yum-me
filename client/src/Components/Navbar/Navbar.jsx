@@ -7,13 +7,23 @@ class Navbar extends React.Component {
     super(props);
     this.state= {
       loggedIn: false,
-      username: 'kathleen'
+      // CHANGE BELOW TO CURRENT USER
+      username: 'kathleen',
+      term: ''
     };
+    this.handleChange = this.handleChange.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
   }
 
-  handleMenu() {
-    let mainNav = document.getElementById('js-menu');
-    mainNav.classList.toggle('active');
+  handleChange(e) {
+    this.setState({
+      term: e.target.value
+    });
+  }
+
+  handleSubmit(e) {
+    e.preventDefault();
+    this.props.handleSearch(this.state.term);
   }
 
   render() {
@@ -37,8 +47,10 @@ class Navbar extends React.Component {
           </div>
           <div className="nav-search-input-container">
             <div className="nav-search-flex">
-              <span className="nav-search-icon"><FaSearch /></span>          
-              <input id="nav-search-input" placeholder="search" ></input>
+              <form onSubmit={this.handleSubmit}>
+                <span className="nav-search-icon"><FaSearch /></span>          
+                <input id="nav-search-input" onChange={this.handleChange} placeholder="search" ></input>                
+              </form>
             </div>
           </div>
           <ul className="main-nav" id="js-menu">
