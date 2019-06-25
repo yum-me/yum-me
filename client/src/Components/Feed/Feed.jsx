@@ -1,6 +1,6 @@
 import React from 'react';
 import Navbar from '../Navbar/Navbar.jsx';
-import FeedPosts from './FeedPost/FeedPost.jsx';
+import FeedPost from './FeedPost/FeedPost.jsx';
 import './Feed.css';
 import axios from 'axios';
 
@@ -9,49 +9,63 @@ class Feed extends React.Component {
     super(props)
     this.state = {
       userInfo: [],
-      feed: []
+      feed: [],
+      posts: 0
     }
     this.fetchUserData = this.fetchUserData.bind(this);
     this.fetchUserFeed = this.fetchUserFeed.bind(this);
+    this.fetchUserPosts = this.fetchUserPosts.bind(this);
   }
 
   componentDidMount () {
-    this.fetchUserData()
-    this.fetchUserFeed()
+    this.fetchUserData();
+    this.fetchUserFeed();
+    this.fetchUserPosts();
   }
 
   fetchUserData () {
-    axios.get('http://localhost:3000/user', {params: {username: 'ufukmehmetoglu'}})
+    axios.get('/user', {params: {username: 'ufukmehmetoglu'}})
     .then(({data}) => this.setState({userInfo: data[0]}))
     .catch(err => console.error('Error with get user info'))
   }
 
   fetchUserFeed () {
-    axios.get('http://localhost:3000/feed', {params: {username: 'ufukmehmetoglu'}})
+    axios.get('/feed', {params: {username: 'ufukmehmetoglu'}})
     .then(({data}) => this.setState({feed: data}))
-    .then(() => console.log(this.state))
+    .catch(err => console.error('Error with get user info'))
+  }
+
+  fetchUserPosts () {
+    axios.get('/userPosts', {params: {username: 'ufukmehmetoglu'}})
+    .then(({data}) => this.setState({posts: data.length}))
     .catch(err => console.error('Error with get user info'))
   }
 
   render () {
-    const { firstName, lastName, username, avatar, location, following, followers} = this.state.userInfo;
+    const { firstName, lastName, username, avatar, following, followers} = this.state.userInfo;
     const { feed } = this.state;
+    const followingNum = following ? following.length : null;
     return (
       <div>
         <Navbar />
         <div className="feed-main">
           <div className="user-info">
             <div className="user-info-inner">
+              <div className="feed-stripe"></div>
               <img className="avatar-photo" src={avatar} />
-              <div className="full-name">{firstName} {lastName}</div>
-              <div className="username">@{username}</div>
-              <div className="followers">{followers} followers</div>
-              {/* <div className="following">{following.length} following</div> */}
-              <div className="location">{location}</div>
+              <div className="feed-name">
+                <h4>{firstName} {lastName}</h4>
+                <p>@{username}</p>
+              </div>
+              <div className="feed-user-info-details">
+                <p><span>{this.state.posts}</span> posts</p>
+                <p><span>{followers}</span> followers</p>
+                <p><span>{followingNum}</span> following</p>
+              </div>
             </div>
           </div>
           <div className="feed-post-main">
-            {feed.map((item, index) => <FeedPosts item={item} key={index}/>)}
+            {feed.map((item, index) => <FeedPost item={item} key={index}/>)}
           </div>
         </div>
       </div>
