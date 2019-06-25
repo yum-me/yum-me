@@ -68,10 +68,10 @@ class CreatePost extends React.Component {
   
   const formData = new FormData();
   formData.append('file', file);
-  formData.append('upload_preset', 'd1mbbhmf');
+  formData.append('upload_preset', `${process.env.PASSWORD}`);
 
   const response = await axios.post(
-    `https://api.cloudinary.com/v1_1/hackreactor/image/upload`,
+    `https://api.cloudinary.com/v1_1/${process.env.NAME}/image/upload`,
     formData
   );
     axios
@@ -106,16 +106,16 @@ class CreatePost extends React.Component {
     if(this.state.restaurants.length > 0 ? result=style2 : result=style1)
     return(
       <div>
-        <form class="createForm" onSubmit ={this.handleSubmit} ref={form => this.form = form} >
+        <form className="createForm" onSubmit ={this.handleSubmit} ref={form => this.form = form} >
           <h1>Create New Post</h1>
-          <input class="createInput" type="text" name="title" placeholder="title" onChange={this.handleChange}/>
-          <div class="createSearch">
-          <input class="createInput" type="text"  placeholder="restaurant" value={this.state.restaurant} onChange={this.handleYelpApi}/>
+          <input className="createInput" type="text" name="title" placeholder="title" onChange={this.handleChange}/>
+          <div className="createSearch">
+          <input className="createInput" type="text"  placeholder="restaurant" value={this.state.restaurant} onChange={this.handleYelpApi}/>
           {this.state.restaurants.length > 0 ? <DropDownRestaurant restaurants={this.state.restaurants} handlePickRestaurant={this.handlePickRestaurant} /> : ""}
           </div>
           <input style={result} type="file" onChange ={this.handleUploadImage}/>
-          <textarea class="createTextArea" rows="100" cols="100" name="text" placeholder="What is your story..."onChange={this.handleChange}></textarea>
-          <input class="createSubmit" type="submit"  />
+          <textarea className="createTextArea" rows="100" cols="100" name="text" placeholder="What is your story..."onChange={this.handleChange}></textarea>
+          <input className="createSubmit" type="submit"  />
         </form>
       </div>
     )
