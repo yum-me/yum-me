@@ -1,6 +1,9 @@
 .browse-h1 {
   color: #3b1360;
-  margin: 30px 60px;
+  margin-bottom: 30px;
+  padding-top: 100px;
+  text-align: center;
+  cursor: default;
 }
 
 .browse-wrap {
@@ -25,7 +28,7 @@
 .hvr-grow:active {
   transform: scale(1.1);
   position: relative;
-  z-index: 1000;
+  z-index: 50;
   cursor: pointer;
 }
 
