@@ -84,7 +84,7 @@ module.exports = {
   },
   restaurant: (req, res) => {
     
-    const apiKey = 'GYdgrGkmsK1bgin4g0BlKGmwGHA7mlvJoge9b1X1tQma1pbkiyEkRmkwG4N6Q_2vu5hT7YYcHtO9Ul_WCMYicZFn-bvy6A3w3DO2PYUhJkB4QFDOXh3xujH6PGoNXXYx';
+    const apiKey = `${process.env.KEY}`;
 
     const searchRequest = {
       term: req.query.term,
