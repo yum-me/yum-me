@@ -1,9 +1,9 @@
 import React from 'react';
-import './RecentPost.css';
+import './PostCard.css';
 import { FaCommentAlt, FaThumbsUp } from 'react-icons/fa';
 import moment from 'moment';
 
-class RecentPost extends React.Component {
+class PostCard extends React.Component {
   constructor(props) {
     super(props);
     this.state = {};
@@ -51,4 +51,4 @@ class RecentPost extends React.Component {
   }
 }
 
-export default RecentPost;
+export default PostCard;
