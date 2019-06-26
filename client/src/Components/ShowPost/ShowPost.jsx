@@ -3,7 +3,8 @@ import NavBar from '../Navbar/Navbar';
 import PostComment from './PostComment/PostComment.jsx'
 import axios from 'axios';
 import './ShowPost.css';
-import moment from 'moment'
+import moment from 'moment';
+import { FaCommentAlt, FaThumbsUp, FaTelegramPlane } from 'react-icons/fa';
 
 class ShowPost extends React.Component {
   constructor(props) {
@@ -89,14 +90,18 @@ class ShowPost extends React.Component {
                 </div>
                 <p className="show-post-text">{text}</p>  
               </div>
-              <p>Restaurant: {restaurant}</p>
             </div>
             <div className="show-post-comments-container">
-              <span>{comments ? comments.length : ''} comments</span>
-              <button onClick={this.handleLikePost} disabled={this.state.like}> {likes} likes</button>
+              <p className="show-post-restaurant"><strong><span>Restaurant:</span></strong> {restaurant}</p>
+              <p>(Address here?)</p>
+              <div className="post-comments-likes">
+                <p><span><FaCommentAlt className="post-comment-icon"/></span> {comments ? comments.length : ''}</p>
+                {/* FIX BELOW SINCE NO LONGER BUTTON */}
+                <p><span onClick={this.handleLikePost} disabled={this.state.like}><FaThumbsUp className="post-like-icon" /></span> {likes}</p>
+              </div>
               <form>
                 <textarea className="comment-input" name="text" placeholder="Write a comment..." onChange={this.handleChange}/>
-                <button type="submit" onClick={this.handleSubmit}>Add Comment</button>
+                <button type="submit" onClick={this.handleSubmit}><FaTelegramPlane /></button>
               </form>
               <div className="show-post-comments">
                 {comments ? comments.map((item, index) => <PostComment item={item} key={index} />): ''}
