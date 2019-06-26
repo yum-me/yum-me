@@ -7,6 +7,7 @@ import Search from './Components/Search/Search.jsx';
 import CreatePost from './Components/CreatePost/CreatePost.jsx';
 import Register from './Components/User/Register.jsx';
 import Login from './Components/User/Login.jsx';
+import ShowPost from './Components/ShowPost/ShowPost.jsx';
 
 
 
