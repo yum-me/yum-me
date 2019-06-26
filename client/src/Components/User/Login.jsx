@@ -4,6 +4,7 @@ import User from './User.css'
 import axios from 'axios';
 import Register from './Register.jsx'
 import Home from '../Home/Home.jsx'
+import NavBar from '../Navbar/Navbar.jsx'
 import { Route, Link, BrowserRouter as Router } from "react-router-dom"
 
 
@@ -38,6 +39,8 @@ class Login extends React.Component {
   render() {
     return (
       <div>
+        <NavBar />
+      <div className="mainLogin">
         <form className="userRegister" onSubmit={this.submit} ref={form => this.form = form}>
           <div>
             <img src="" ></img>
@@ -47,11 +50,12 @@ class Login extends React.Component {
           <input className="usernameRegister input" type="password" minlength="6" name="password" placeholder="Password"onChange={this.handleChange} required />
           <div>
             <a className="submitRegister"  href="#">
-            <input className="submitRegister input" type="submit" value="Sign Up" />
+            <input className="submitRegister input" type="submit" value="Login" />
             </a>
             
           </div>
         </form>
+      </div>
       </div>
     )
   }

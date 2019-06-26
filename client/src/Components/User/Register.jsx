@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom'
 import User from './User.css'
 import axios from 'axios';
 import Login from './Login.jsx'
+import NavBar from '../Navbar/Navbar.jsx'
 import { Route, Link, BrowserRouter as Router } from "react-router-dom"
 
 
@@ -16,22 +17,43 @@ class Register extends React.Component {
       email: "",
       password:"",
       password2: "",
-      avatar: "adad",
+      avatar: "",
+      file: "",
       location: ""
     }
     this.handleChange = this.handleChange.bind(this);
     this.submit = this.submit.bind(this);
+    this.handleUploadImage = this.handleUploadImage.bind(this);
   }
   handleChange(e) {
     this.setState({
       [e.target.name]: e.target.value
     })
   }
-  submit(e){
+
+  handleUploadImage(e){
     e.preventDefault();
+    this.setState({
+      file: e.target.files[0]
+    },console.log("image" ,this.state.file))
+  }
+
+  async submit(event){
+    event.preventDefault();
+    const { file} = this.state;
+  
+  const formData = new FormData();
+  formData.append('file', file);
+  formData.append('upload_preset', `${process.env.PASSWORD}`);
+
+  const response = await axios.post(
+    `https://api.cloudinary.com/v1_1/${process.env.NAME}/image/upload`,
+
+    formData
+  );
     const {username, firstName, lastName, email, password, password2, avatar, location} = this.state;
     axios 
-      .post('/register',{username, firstName, lastName, email, password, password2, avatar, location})
+      .post('/register',{username, firstName, lastName, email, password, password2, avatar: response.data.url, location})
       .then(() => {
         <Route exact path="/login" component={Login} />
         ReactDOM.render(<Login />, document.getElementById("app"));
@@ -44,24 +66,25 @@ class Register extends React.Component {
   render() {
     return (
       <div>
+        <NavBar />
+      
+      <div className="mainRegister">
         <form className="userRegister" onSubmit={this.submit} ref={form => this.form = form}>
           <div>
             <img src="" ></img>
-            <h1>sign up</h1>
+            <h1 className="h1">Sign Up</h1>
           </div>
-          <div>
-            <input className="firstName input" type="text" name="firstName" placeholder="First Name" onChange={this.handleChange} required/>
-            <input className="lastName input" type="text" name="lastName" placeholder="Last Name" onChange={this.handleChange} required/>
-          </div>
+          <input className="usernameRegister input" type="text" name="firstName" placeholder="First Name" onChange={this.handleChange} required/>
+          <input className="usernameRegister input" type="text" name="lastName" placeholder="Last Name" onChange={this.handleChange} required/>
           <input className="usernameRegister input" type="text" name="username" placeholder="Username" onChange={this.handleChange} required/>
           <input className="usernameRegister input" type="email" name="email" placeholder="E-mail" onChange={this.handleChange} required/>
-          <input className="usernameRegister input" type="password" minlength="6" name="password" placeholder="Password"onChange={this.handleChange} required />
+          <input className="usernameRegister input" type="password" minLength="6" name="password" placeholder="Password"onChange={this.handleChange} required />
           <input className="usernameRegister input" type="password" name="password2" placeholder="Confirm Password"onChange={this.handleChange}/>
           <input className="usernameRegister input" type="text" name="location" placeholder="Location"onChange={this.handleChange} required/>
           <div className="avatar">
             <p>Avatar</p>
             <a>
-            <input className="avatarInput"  type="file" />
+            <input className="avatarInput"  type="file" onChange={this.handleUploadImage} />
             </a>
           </div>
           <div>
@@ -71,6 +94,7 @@ class Register extends React.Component {
             
           </div>
         </form>
+      </div>
       </div>
     )
   }
