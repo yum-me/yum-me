@@ -11,7 +11,7 @@ class Restaurant extends React.Component {
 
   render() {
     return(
-      <p onClick={() => this.props.handlePickRestaurant(this.props.restaurant)}>{this.props.restaurant}</p> 
+      <p className="restaurant"onClick={() => this.props.handlePickRestaurant(this.props.restaurant)}>{this.props.restaurant}</p> 
     )
   }
 }

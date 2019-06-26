@@ -1,8 +1,11 @@
 import React from 'react'
+import ReactDOM from 'react-dom'
 import style from './CreatePost.css'
 import DropDownRestaurant from './DropDownRestaurant.jsx'
+import Home from '../Home/Home.jsx'
 import NavBar from '../Navbar/Navbar.jsx'
 import axios from 'axios'
+import { Route, Link, BrowserRouter as Router } from "react-router-dom"
 
 
 class CreatePost extends React.Component {
@@ -14,6 +17,7 @@ class CreatePost extends React.Component {
       restaurant: "",
       text: "",
       author: "Ufukerdem",
+      location: "",
       image: null,
       file: null
     };
@@ -42,11 +46,12 @@ class CreatePost extends React.Component {
     })
   }
   handleYelpApi(e) {
+    const { location } = this.state;
     this.setState({
       restaurant: e.target.value
     }, () => {
       axios
-        .get('/yelp', { params: { term: this.state.restaurant, location: "90005" } })
+        .get('/yelp', { params: { term: this.state.restaurant, location } })
         .then((data) => {
           var result = [];
           data.data.forEach(obj => {
@@ -78,7 +83,11 @@ class CreatePost extends React.Component {
     );
     axios
       .post('/writepost', { restaurant: restaurant, title: title, text: text, image: response.data.url, author: author })
-      .then(() => console.log('Succesfully posted'))
+      .then(() => {
+        // console.log('Succesfully posted')
+        <Route exact path="/home" component={Home}/>
+        ReactDOM.render(<Home />, document.getElementById("app"));
+      })
       .catch(err => console.log('Error getting', err))
     this.setState({
       title: "",
@@ -94,14 +103,12 @@ class CreatePost extends React.Component {
 
   render() {
     var style1 = {
-      position: "absolute",
-      top: "210px",
-      left: "518px"
+      position: "relative",
+      right: "80px"
     }
     var style2 = {
-      position: "absolute",
-      top: "210px",
-      left: "518px",
+      position: "relative",
+      right: "80px",
       zIndex: "-1"
     }
     let result;
@@ -115,14 +122,15 @@ class CreatePost extends React.Component {
 
             <form className="createForm" onSubmit={this.handleSubmit} ref={form => this.form = form} >
 
-              <h1>Create New Post</h1>
-              <input className="createInput" type="text" name="title" placeholder="title" onChange={this.handleChange} />
+              <h1 className="headerPost">Create New Post</h1>
+              <input className="createInput" type="text" name="title" placeholder="Title" onChange={this.handleChange} required/>
+              <input className="createInput" type="text" name="location" placeholder="Location" onChange={this.handleChange} required/>
               <div className="createSearch">
-                <input className="createInput" type="text" placeholder="restaurant" value={this.state.restaurant} onChange={this.handleYelpApi} />
+                <input className="createInput" type="text" placeholder="Restaurant" value={this.state.restaurant} onChange={this.handleYelpApi} required/>
                 {this.state.restaurants.length > 0 ? <DropDownRestaurant restaurants={this.state.restaurants} handlePickRestaurant={this.handlePickRestaurant} /> : ""}
               </div>
-              <input style={result} type="file" onChange={this.handleUploadImage} />
-              <textarea className="createTextArea" rows="100" cols="100" name="text" placeholder="What is your story..." onChange={this.handleChange}></textarea>
+              <input style={result} type="file" onChange={this.handleUploadImage} required/>
+              <textarea className="createTextArea" rows="100" cols="100" name="text" placeholder="What is your story..." onChange={this.handleChange} required></textarea>
               <input className="createSubmit" type="submit" />
 
             </form>
