@@ -26,7 +26,7 @@ class ShowPost extends React.Component {
   }
 
   fetchOnePost () {
-    axios.get('/post', {params: {_id: '5d0eb62076ee652e557d864c'}})
+    axios.get('/post', {params: {_id: '5d0eb62076ee652e557d865b'}})
     .then(({data}) => this.setState({post: data[0]}))
     .then(() => {
       return this.state.post.comments.sort(function(a, b) {
@@ -48,17 +48,24 @@ class ShowPost extends React.Component {
   handleSubmit (event) {
     const { text } = this.state;
     event.preventDefault()
-    axios.post('/comment', {text}, {params: {_id: '5d0eb62076ee652e557d864c'}})
+    axios.post('/comment', {text}, {params: {_id: '5d0eb62076ee652e557d865b'}})
     .then(() => this.fetchOnePost())
     .catch(() => console.error('Error with adding comment'))
     
   }
   
   handleLikePost () {
-    this.setState({like: true})
-    axios.post('/post', {params: {_id: '5d0eb62076ee652e557d864c'}})
-    .then(() => this.fetchOnePost())
-    .catch(() => console.error('Error with adding comment'))
+    this.setState({like: !this.state.like}, () => {
+      if(this.state.like) {
+        axios.post('/post/like', {params: {_id: '5d0eb62076ee652e557d865b'}})
+        .then(() => this.fetchOnePost())
+        .catch(() => console.error('Error with liking post'));
+      } else {
+        axios.post('/post/unlike', {params: {_id: '5d0eb62076ee652e557d865b'}})
+        .then(() => this.fetchOnePost())
+        .catch(() => console.error('Error with unliking post'));
+      }
+    })
   }
 
   render () {
@@ -68,6 +75,7 @@ class ShowPost extends React.Component {
     const recommendImage = recommend === "Yes" ? 
       <img className="post-recommend-img" src="https://res.cloudinary.com/kjhogan/image/upload/v1536097829/happy_dbmo3c.png"></img> :
       <img className="post-recommend-img" src="https://res.cloudinary.com/kjhogan/image/upload/v1536097829/sad_fcfqhu.png"></img>
+    const likeIcon = this.state.like ? <FaThumbsUp className="post-like-icon-activated" /> : <FaThumbsUp className="post-like-icon" />;
     
     return (
       <div> 
@@ -92,17 +100,18 @@ class ShowPost extends React.Component {
               </div>
             </div>
             <div className="show-post-comments-container">
-              <p className="show-post-restaurant"><strong><span>Restaurant:</span></strong> {restaurant}</p>
-              <p>(Address here?)</p>
-              <div className="post-comments-likes">
-                <p><span><FaCommentAlt className="post-comment-icon"/></span> {comments ? comments.length : ''}</p>
-                {/* FIX BELOW SINCE NO LONGER BUTTON */}
-                <p><span onClick={this.handleLikePost} disabled={this.state.like}><FaThumbsUp className="post-like-icon" /></span> {likes}</p>
+              <div className="show-post-comments-info">
+                <p className="show-post-restaurant"><strong><span>Restaurant:</span></strong> {restaurant}</p>
+                <p>(Address here?)</p>
+                <div className="post-comments-likes">
+                  <p><span><FaCommentAlt className="post-comment-icon"/></span> {comments ? comments.length : ''}</p>
+                  <p><span onClick={this.handleLikePost}>{likeIcon}</span> {likes}</p>
+                </div>
+                <form>
+                  <textarea className="comment-input" name="text" placeholder="Write a comment..." onChange={this.handleChange}/>
+                  <button type="submit" onClick={this.handleSubmit}><FaTelegramPlane /></button>
+                </form>
               </div>
-              <form>
-                <textarea className="comment-input" name="text" placeholder="Write a comment..." onChange={this.handleChange}/>
-                <button type="submit" onClick={this.handleSubmit}><FaTelegramPlane /></button>
-              </form>
               <div className="show-post-comments">
                 {comments ? comments.map((item, index) => <PostComment item={item} key={index} />): ''}
               </div>

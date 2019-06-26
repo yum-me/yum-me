@@ -176,12 +176,19 @@ module.exports = {
     .then(data => res.status(200).send(data))
     .catch(err => res.status(404).send('Error with getUser', err))
   },
-  //Upvote a post, /post
+  //Upvote a post, /post/like
   upvote: (req, res) => {
     const { _id } = req.query;
     Post.findOneAndUpdate(_id, {$inc: {likes: 1}})
     .then(response => res.status(200).send(response))
     .catch(err => {res.status(400).send('Error liking post', err) });
+  },
+  //Downvote a post, /post/unlike
+  downvote: (req, res) => {
+    const { _id } = req.query;
+    Post.findOneAndUpdate(_id, {$inc: {likes: -1}})
+    .then(response => res.status(200).send(response))
+    .catch(err => {res.status(400).send('Error unliking post', err) });
   },
   //Adding a comment to a post, /comment
   addComment: (req, res) => {
