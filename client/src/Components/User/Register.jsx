@@ -63,37 +63,38 @@ class Register extends React.Component {
 
   render() {
     return (
-      <div class="main-main">
-        <NavBar />
-      
-      <div className="mainRegister">
-        <form className="userRegister" onSubmit={this.submit} ref={form => this.form = form}>
-          <div>
-            <img src="" ></img>
-            <h1 className="h1">Sign Up</h1>
-          </div>
-          <input className="usernameRegister input" type="text" name="firstName" placeholder="First Name" onChange={this.handleChange} required/>
-          <input className="usernameRegister input" type="text" name="lastName" placeholder="Last Name" onChange={this.handleChange} required/>
-          <input className="usernameRegister input" type="text" name="username" placeholder="Username" onChange={this.handleChange} required/>
-          <input className="usernameRegister input" type="email" name="email" placeholder="E-mail" onChange={this.handleChange} required/>
-          <input className="usernameRegister input" type="password" minLength="6" name="password" placeholder="Password"onChange={this.handleChange} required />
-          <input className="usernameRegister input" type="password" name="password2" placeholder="Confirm Password"onChange={this.handleChange}/>
-          <input className="usernameRegister input" type="text" name="location" placeholder="Location"onChange={this.handleChange} required/>
-          <div className="avatar">
-            <p>Avatar</p>
-            <a>
-            <input className="avatarInput"  type="file" onChange={this.handleUploadImage} />
-            </a>
-          </div>
-          <div>
-            <a className="submitRegister"  href="#">
-            <input className="submitRegister input" type="submit" value="Sign Up" />
-            </a>
-            
-          </div>
-        </form>
+    <div>
+      <NavBar />
+      <div className="mainRegisterContainer">
+        <div className="mainRegister">
+          <form className="userRegister" onSubmit={this.submit} ref={form => this.form = form}>
+            <div className="signupHeader">
+              <img src="https://res.cloudinary.com/kjhogan/image/upload/v1535738846/signup_ldp9oz.png" ></img>
+              <h1>Sign Up</h1>
+            </div>
+            <input className="usernameRegister input" type="text" name="firstName" placeholder="First Name" onChange={this.handleChange} required/>
+            <input className="usernameRegister input" type="text" name="lastName" placeholder="Last Name" onChange={this.handleChange} required/>
+            <input className="usernameRegister input" type="text" name="username" placeholder="Username" onChange={this.handleChange} required/>
+            <input className="usernameRegister input" type="email" name="email" placeholder="E-mail" onChange={this.handleChange} required/>
+            <input className="usernameRegister input" type="password" minLength="6" name="password" placeholder="Password"onChange={this.handleChange} required />
+            <input className="usernameRegister input" type="password" name="password2" placeholder="Confirm Password"onChange={this.handleChange}/>
+            <input className="usernameRegister input" type="text" name="location" placeholder="Location"onChange={this.handleChange} required/>
+            <div className="registerAvatar">
+              <p>Avatar</p>
+              <a>
+              <input className="avatarInput"  type="file" onChange={this.handleUploadImage} />
+              </a>
+            </div>
+            <div>
+              <a className="submitRegister"  href="#">
+              <button className="submitRegisterBtn" type="submit">sign up</button>
+              {/* <input className="submitRegister input" type="submit" value="sign up" /> */}
+              </a>              
+            </div>
+          </form>
+        </div>
       </div>
-      </div>
+    </div>
     )
   }
 }
