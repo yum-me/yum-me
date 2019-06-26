@@ -34,6 +34,13 @@ router.route('/feed')
 router.route('/user')
   .get(controller.getUser)
 
+router.route('/user/follow')
+  .get(controller.checkFollow)
+  .post(controller.followUser)
+
+router.route('/user/unfollow') 
+  .post(controller.unfollowUser)
+
 router.route('/comment')
   .post(controller.addComment)
 
