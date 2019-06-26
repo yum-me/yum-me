@@ -143,6 +143,8 @@ module.exports = {
   //Show one post, /post
   getPost: (req, res) => {
     const { _id } = req.query;
+
+    // Comment.aggregate([{ $sort : { createdAt : -1} } ])
     Post.find({_id})
     .then(data => res.status(200).send(data))
     .catch(err => res.status(404).send('Error with getPost', err))
