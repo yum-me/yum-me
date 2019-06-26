@@ -57,11 +57,11 @@ class ShowPost extends React.Component {
   handleLikePost () {
     this.setState({like: !this.state.like}, () => {
       if(this.state.like) {
-        axios.post('/post/like', {params: {_id: '5d10404f189fe79e615a8889'}})
+        axios.post('/post/like', {_id: '5d0eb62076ee652e557d865b'})
         .then(() => this.fetchOnePost())
         .catch(() => console.error('Error with liking post'));
       } else {
-        axios.post('/post/unlike', {params: {_id: '5d10404f189fe79e615a8889'}})
+        axios.post('/post/unlike', {_id: '5d0eb62076ee652e557d865b'})
         .then(() => this.fetchOnePost())
         .catch(() => console.error('Error with unliking post'));
       }
