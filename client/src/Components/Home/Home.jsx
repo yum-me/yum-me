@@ -3,10 +3,9 @@ import './Home.css';
 
 const Home = () => {
   return(
-    <div>
+    <div className="landing-body">
       <div className="landing-container">
         <div className="landing-container-flex">
-          {/* <img src="https://res.cloudinary.com/kjhogan/image/upload/v1536081915/landing_image_2000_tqfac0.png" className="landing-img"></img>   */}
           <div>
             <h2 className="landing-h2">welcome to</h2>
             <h1 className="landing-h1">yum.me</h1>
