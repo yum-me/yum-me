@@ -18,7 +18,12 @@ router
 //Matt's routes
 router.route('/post')
   .get(controller.getPost)
+
+router.route('/post/like')
   .post(controller.upvote)
+
+router.route('/post/unlike')
+  .post(controller.downvote)
   
 router.route('/userPosts')
   .get(controller.getUserPosts)
