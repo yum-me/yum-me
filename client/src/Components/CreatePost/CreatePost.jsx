@@ -108,7 +108,7 @@ class CreatePost extends React.Component {
     if (this.state.restaurants.length > 0 ? result = style2 : result = style1)
       return (
 
-        <div >
+        <div>
           <NavBar />
 
           <div className="createPostMain">
