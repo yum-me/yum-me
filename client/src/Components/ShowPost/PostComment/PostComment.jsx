@@ -6,9 +6,13 @@ const PostComment = props => {
   const { author, createdAt, text, _id} = props.item
   return (
     <div className="single-comment">
-      <span>{author.username}</span>
-      <div>{text}</div>
-      <span>{moment(createdAt).fromNow()}</span>
+      <div className="comment-details">
+        <img src={author.avatar}></img>
+        <div>
+          <p className="comment-text"><span>{author.username}</span>{text}</p>
+          <p className="comment-date">{moment(createdAt).fromNow()}</p>    
+        </div>
+      </div>
     </div>
   )
 }
