@@ -47,12 +47,12 @@ class Search extends React.Component {
 
   render() {
 
-    let userList = this.state.users.length === 0 ? <p>No users found</p> : 
+    let userList = this.state.users.length === 0 ? <p className="result-p">No users found</p> : 
       this.state.users.map((user, i) => {
         return <div className="grid-item-five hvr-grow" key={i}><UserCard user={user} /></div>               
       });
 
-    let postList = this.state.posts.length === 0 ? <p>No posts found</p> :  
+    let postList = this.state.posts.length === 0 ? <p className="result-p">No posts found</p> :  
       this.state.posts.map((post, i) => {
         return <div className="grid-item-four hvr-grow" key={i}><PostCard post={post} /></div>               
       });
@@ -64,22 +64,24 @@ class Search extends React.Component {
       <div>
         {/* HOW TO HANDLE THIS WITH ALL OTHER COMPONENTS USING NAV??? */}
         <Navbar handleSearch={(term) => this.handleSearch(term)}/>
-        <h1>Search Results for "{this.state.term}"</h1>
-        <div className="search-user-container">
-          {/* USERS */}
-          <div className="browse-wrap">
-            <h2><strong>{this.state.users.length}</strong> {users}</h2>
-            <div className="col-grid">
-              {userList}
+        <div className="search">
+          <h1>Search Results for "{this.state.term}"</h1>
+          <div className="search-user-container">
+            {/* USERS */}
+            <div className="browse-wrap">
+              <h2><strong>{this.state.users.length}</strong> {users}</h2>
+              <div className="col-grid">
+                {userList}
+              </div>
             </div>
           </div>
-        </div>
-        <div>
-          {/* POSTS */}
-          <div className="browse-wrap">
-            <h2><strong>{this.state.posts.length}</strong> {posts}</h2>
-            <div className="col-grid">
-              {postList}
+          <div>
+            {/* POSTS */}
+            <div className="browse-wrap">
+              <h2><strong>{this.state.posts.length}</strong> {posts}</h2>
+              <div className="col-grid">
+                {postList}
+              </div>
             </div>
           </div>
         </div>

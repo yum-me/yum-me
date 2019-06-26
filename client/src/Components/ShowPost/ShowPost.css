@@ -1,0 +1,34 @@
+.show-post-main {
+  margin: 3%;
+  /* padding: 2%; */
+  /* border: 1px solid black; */
+}
+
+.show-post-avatar {
+  width: 3.5%;
+  border-radius: 50%;
+}
+
+.show-post-user {
+  display: flex;
+  align-items: center;
+}
+
+.show-post-image {
+  width: 30vw;
+}
+
+hr {
+  margin-block-start: 0.5em;
+  margin-block-end: 0.5em;
+}
+
+.comment-input {
+  width: 70%;
+  border: none;
+  resize: none;
+  font-size: 0.9em;
+  padding: 5px;
+
+}
+

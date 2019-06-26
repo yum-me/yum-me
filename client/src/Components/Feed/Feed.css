@@ -1,47 +1,71 @@
 .feed-main {
   display: flex;
+  padding-top: 70px;
 }
 
-
 .user-info {
- width: 30vw;
- height: 60vh;
- background-color: red;
- text-align: center;
+ width: 420px;
 }
 
 .user-info-inner {
-  padding-top: 10%;
-  display: inline-block;
+  border: 1px solid rgba(0,0,0,0.2);
+  margin: 20px 0 0 40px;
+  width: 378px;
+  height: 200px;
+  background: white;
+  border-radius: 4px;  
+  position: fixed;
+}
+
+.user-info-inner h4 {
+  font-weight: bold;
+  color: #3b1360;
+  font-size: 1.1em;
 }
 
 .feed-post-main {
-  width: 70vw;
-  /* padding-left: 2%; */
-  /* height: 60vh;
-  background-color: blue; */
+  flex: 2;
+  margin-top: 20px;
+  padding-right: 5%;
+  padding-left: 2%;
 }
 
 .avatar-photo {
-  width: 40%;
-  /* height: 40; */
+  width: 120px;
+  margin-top: -60px;
+  margin-left: 20px;
   border-radius: 50%;
-  vertical-align: middle;
-  margin-bottom: 3%;
-  /* padding-bottom: 5%; */
+  display: inline-block;
 }
 
-.feed-post {
-  border: 1px solid black;
-  padding: 2%;
+.feed-stripe {
+  height: 75px;
+  border-radius: 4px 4px 0 0;
+  background-color: #3b1360;
 }
 
-.post-image {
-  width: 10vw;
-  height: 10vh;
+.feed-name {
+  display: inline-block;
+  position: relative;
+  left: 10px;
+  top: -10px;
 }
 
-.post-detail {
+.feed-name p {
+  color: rgba(0,0,0,0.5);
+}
+
+.feed-user-info-details {
   display: flex;
-  padding-top: 1%;
+  padding: 20px;
+}
+
+.feed-user-info-details p {
+  flex: 1;
+  text-align: center;
+}
+
+.feed-user-info-details span {
+  color: #3b1360;
+  font-weight: bold;
 }

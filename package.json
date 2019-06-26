@@ -6,8 +6,13 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "seed": "node database/seeds.js",
+<<<<<<< HEAD
     "start": "env-cmd nodemon server/index.js",
     "build": "webpack -w -d"
+=======
+    "start": "nodemon ./server/index.js",
+    "build": "webpack -d --watch"
+>>>>>>> adding package.json for merge errors
   },
   "repository": {
     "type": "git",
