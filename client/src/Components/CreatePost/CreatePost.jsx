@@ -12,9 +12,9 @@ class CreatePost extends React.Component {
       restaurants: [],
       title: "",
       restaurant: "",
-      text:"",
+      text: "",
       author: "Ufukerdem",
-      image:null,
+      image: null,
       file: null
     };
     this.handleChange = this.handleChange.bind(this);
@@ -23,30 +23,30 @@ class CreatePost extends React.Component {
     this.handleSubmit = this.handleSubmit.bind(this);
     this.handleUploadImage = this.handleUploadImage.bind(this);
   }
-  
-  handleChange(e){
+
+  handleChange(e) {
     this.setState({
       [e.target.name]: e.target.value
-    },console.log(this.state))
+    }, console.log(this.state))
   }
-  handleUploadImage(e){
+  handleUploadImage(e) {
     e.preventDefault();
     this.setState({
       file: e.target.files[0]
-    },console.log("image" ,this.state.file))
+    }, console.log("image", this.state.file))
   }
-  handlePickRestaurant(option){
+  handlePickRestaurant(option) {
     this.setState({
       restaurant: option,
-      restaurants:[]
+      restaurants: []
     })
   }
-  handleYelpApi(e){
+  handleYelpApi(e) {
     this.setState({
-      restaurant: e.target.value 
+      restaurant: e.target.value
     }, () => {
       axios
-        .get('/yelp',{params: {term: this.state.restaurant, location: "90005"}})
+        .get('/yelp', { params: { term: this.state.restaurant, location: "90005" } })
         .then((data) => {
           var result = [];
           data.data.forEach(obj => {
@@ -55,81 +55,81 @@ class CreatePost extends React.Component {
           this.setState({
             restaurants: result
           })
-  
+
         })
-        .catch(err => console.log('Error api yelp',err))
+        .catch(err => console.log('Error api yelp', err))
     })
-    
+
   }
-  
-  
-  async handleSubmit(event){
+
+
+  async handleSubmit(event) {
     event.preventDefault();
-    const { restaurant, title, text, image, author,file } = this.state;
-  
-  const formData = new FormData();
-  formData.append('file', file);
-  formData.append('upload_preset', `${process.env.PASSWORD}`);
+    const { restaurant, title, text, image, author, file } = this.state;
 
-  const response = await axios.post(
-    `https://api.cloudinary.com/v1_1/${process.env.NAME}/image/upload`,
+    const formData = new FormData();
+    formData.append('file', file);
+    formData.append('upload_preset', `${process.env.PASSWORD}`);
 
-    formData
-  );
+    const response = await axios.post(
+      `https://api.cloudinary.com/v1_1/${process.env.NAME}/image/upload`,
+
+      formData
+    );
     axios
-      .post('/writepost', {restaurant:restaurant, title:title, text:text, image: response.data.url, author: author})
+      .post('/writepost', { restaurant: restaurant, title: title, text: text, image: response.data.url, author: author })
       .then(() => console.log('Succesfully posted'))
-      .catch(err => console.log('Error getting',err))
+      .catch(err => console.log('Error getting', err))
     this.setState({
       title: "",
       restaurant: "",
-      text:"",
+      text: "",
       author: "",
-      image:""
+      image: ""
     })
     this.form.reset();
   }
-  
+
 
 
   render() {
     var style1 = {
       position: "absolute",
-      top: "161px",
+      top: "210px",
       left: "518px"
     }
     var style2 = {
       position: "absolute",
-      top: "161px",
+      top: "210px",
       left: "518px",
       zIndex: "-1"
     }
     let result;
-    if(this.state.restaurants.length > 0 ? result=style2 : result=style1)
-    return(
-      
-      <div>
-        <NavBar />
-      
-      <div>
+    if (this.state.restaurants.length > 0 ? result = style2 : result = style1)
+      return (
 
-        <form className="createForm" onSubmit ={this.handleSubmit} ref={form => this.form = form} >
+        <div >
+          <NavBar />
 
-          <h1>Create New Post</h1>
-          <input className="createInput" type="text" name="title" placeholder="title" onChange={this.handleChange}/>
-          <div className="createSearch">
-          <input className="createInput" type="text"  placeholder="restaurant" value={this.state.restaurant} onChange={this.handleYelpApi}/>
-          {this.state.restaurants.length > 0 ? <DropDownRestaurant restaurants={this.state.restaurants} handlePickRestaurant={this.handlePickRestaurant} /> : ""}
+          <div className="createPostMain">
+
+            <form className="createForm" onSubmit={this.handleSubmit} ref={form => this.form = form} >
+
+              <h1>Create New Post</h1>
+              <input className="createInput" type="text" name="title" placeholder="title" onChange={this.handleChange} />
+              <div className="createSearch">
+                <input className="createInput" type="text" placeholder="restaurant" value={this.state.restaurant} onChange={this.handleYelpApi} />
+                {this.state.restaurants.length > 0 ? <DropDownRestaurant restaurants={this.state.restaurants} handlePickRestaurant={this.handlePickRestaurant} /> : ""}
+              </div>
+              <input style={result} type="file" onChange={this.handleUploadImage} />
+              <textarea className="createTextArea" rows="100" cols="100" name="text" placeholder="What is your story..." onChange={this.handleChange}></textarea>
+              <input className="createSubmit" type="submit" />
+
+            </form>
           </div>
-          <input style={result} type="file" onChange ={this.handleUploadImage}/>
-          <textarea className="createTextArea" rows="100" cols="100" name="text" placeholder="What is your story..."onChange={this.handleChange}></textarea>
-          <input className="createSubmit" type="submit"  />
-
-        </form>
-      </div>
-      </div>
-    )
+        </div>
+      )
   }
 }
 
-  export default CreatePost;
+export default CreatePost;
