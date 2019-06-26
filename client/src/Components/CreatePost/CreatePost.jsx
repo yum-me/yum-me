@@ -1,6 +1,7 @@
 import React from 'react'
 import style from './CreatePost.css'
 import DropDownRestaurant from './DropDownRestaurant.jsx'
+import NavBar from '../Navbar/Navbar.jsx'
 import axios from 'axios'
 
 
@@ -106,6 +107,10 @@ class CreatePost extends React.Component {
     let result;
     if(this.state.restaurants.length > 0 ? result=style2 : result=style1)
     return(
+      
+      <div>
+        <NavBar />
+      
       <div>
 
         <form className="createForm" onSubmit ={this.handleSubmit} ref={form => this.form = form} >
@@ -121,6 +126,7 @@ class CreatePost extends React.Component {
           <input className="createSubmit" type="submit"  />
 
         </form>
+      </div>
       </div>
     )
   }
