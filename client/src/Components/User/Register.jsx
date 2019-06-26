@@ -65,7 +65,7 @@ class Register extends React.Component {
 
   render() {
     return (
-      <div>
+      <div class="main-main">
         <NavBar />
       
       <div className="mainRegister">
