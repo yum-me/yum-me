@@ -1,0 +1,71 @@
+.feed-main {
+  display: flex;
+  padding-top: 70px;
+}
+
+.user-info {
+ width: 420px;
+}
+
+.user-info-inner {
+  border: 1px solid rgba(0,0,0,0.2);
+  margin: 20px 0 0 40px;
+  width: 378px;
+  height: 200px;
+  background: white;
+  border-radius: 4px;  
+  position: fixed;
+}
+
+.user-info-inner h4 {
+  font-weight: bold;
+  color: #3b1360;
+  font-size: 1.1em;
+}
+
+.feed-post-main {
+  flex: 2;
+  margin-top: 20px;
+  padding-right: 5%;
+  padding-left: 2%;
+}
+
+.avatar-photo {
+  width: 120px;
+  margin-top: -60px;
+  margin-left: 20px;
+  border-radius: 50%;
+  display: inline-block;
+}
+
+.feed-stripe {
+  height: 75px;
+  border-radius: 4px 4px 0 0;
+  background-color: #3b1360;
+}
+
+.feed-name {
+  display: inline-block;
+  position: relative;
+  left: 10px;
+  /* top: -10px; */
+}
+
+.feed-name p {
+  color: rgba(0,0,0,0.5);
+}
+
+.feed-user-info-details {
+  display: flex;
+  padding: 20px;
+}
+
+.feed-user-info-details p {
+  flex: 1;
+  text-align: center;
+}
+
+.feed-user-info-details span {
+  color: #3b1360;
+  font-weight: bold;
+}

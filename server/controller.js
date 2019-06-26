@@ -198,6 +198,38 @@ module.exports = {
     .then(comment => Post.findOneAndUpdate(_id, {$push: {'comments': comment}}))
     .then(response => res.status(200).send(response))
     .catch(err => {res.status(400).send('Error adding comment', err)});
+  },
+  //Follow a user, /user.follow
+  followUser: (req, res) => {
+    const { username } = req.query;
+    const { followUser } = req.body;
+    User.findOneAndUpdate({username: followUser}, {$inc: {followers: 1}})
+    .then(() => User.findOneAndUpdate(username, {$push: {'following': followUser}}))
+    .then(response => res.status(200).send(response))
+    .catch(err => res.status(404).send('Error with followUser', err))
+  },
+  //Unfollow a user /user/unfollow
+  unfollowUser: (req, res) => {
+    const { username } = req.query;
+    const { followUser } = req.body;
+    User.findOneAndUpdate({username: followUser}, {$inc: {followers: -1}})
+    .then(() => User.update({username: username}, {$pull: {'following': followUser}}))
+    .then(response => res.status(200).send(response))
+    .catch(err => res.status(404).send('Error with unFollowUser', err))
+  },
+  //Check if the user is following a different member /user/follow
+  checkFollow: (req, res) => {
+    const { username, followUser} = req.query;
+    User.find({username})
+    .then(data => {
+      for(let i = 0; i < data[0]['following'].length; i++) {
+        if(data[0]['following'][i] === followUser) {
+          res.status(200).send(true)
+        }
+      }
+      res.status(200).send(false) 
+    })
+    .catch(err => res.status(404).send('Error with checkFollow', err))
   }
 }
 
