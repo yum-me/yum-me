@@ -29,19 +29,22 @@ class FollowFeed extends React.Component {
   }
 
   fetchUserData () {
-    axios.get('/user', {params: {username: 'kathog'}})
+    const { username } = this.props.match.params;
+    axios.get('/user', {params: {username}})
     .then(({data}) => this.setState({userInfo: data[0]}))
     .catch(err => console.error('Error with get user info'))
   }
 
   fetchUserFeed () {
-    axios.get('/userPosts', {params: {username: 'kathog'}})
+    const { username } = this.props.match.params;
+    axios.get('/userPosts', {params: {username}})
     .then(({data}) => this.setState({feed: data}))
     .catch(err => console.error('Error with get user info'))
   }
 
   fetchUserPosts () {
-    axios.get('/userPosts', {params: {username: 'kathog'}})
+    const { username } = this.props.match.params;
+    axios.get('/userPosts', {params: {username}})
     .then(({data}) => this.setState({posts: data.length}))
     .catch(err => console.error('Error with get user info'))
   }
@@ -72,7 +75,7 @@ class FollowFeed extends React.Component {
     const { feed } = this.state;
     const followingNum = following ? following.length : null;
     const { followStatus } = this.state;
-    console.log(this.state)
+    console.log('props', this.props)
     return (
       <div>
         <Navbar />

@@ -8,9 +8,10 @@ import CreatePost from './Components/CreatePost/CreatePost.jsx';
 import Register from './Components/User/Register.jsx';
 import Login from './Components/User/Login.jsx';
 import ShowPost from './Components/ShowPost/ShowPost.jsx';
+import FollowFeed from './Components/FollowFeed/FollowFeed.jsx'
+import Router from './router.jsx'
 
 
 
-
-ReactDOM.render(<CreatePost />, document.getElementById('app'));
+ReactDOM.render(<Router />, document.getElementById('app'));
 
