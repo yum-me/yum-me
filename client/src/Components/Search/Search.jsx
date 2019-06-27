@@ -20,14 +20,6 @@ class Search extends React.Component {
     this.handleSearch();
   }
 
-  // fetchPosts() {
-  //   axios.get('/browse')
-  //     .then(({ data }) => this.setState({
-  //       posts: data
-  //     }))
-  //     .catch(err => console.log('Could not fetch posts: ', err));
-  // }
-
   handleSearch() {
     this.setState({
       term: this.props.match.params.term
@@ -46,7 +38,9 @@ class Search extends React.Component {
   }
 
   render() {
-
+    if(this.props.match.params.term !== this.state.term) {
+      this.handleSearch();
+    }
     let userList = this.state.users.length === 0 ? <p className="result-p">No users found</p> : 
       this.state.users.map((user, i) => {
         return <div className="grid-item-five hvr-grow" key={i}><UserCard user={user} /></div>               
