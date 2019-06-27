@@ -25,14 +25,13 @@
   align-items: center;
 }
 
-.feed-post-user-stripe a {
-  text-decoration: none;
-  font-weight: bold;
-  font-size: 1.1em;
+.feed-post-user-stripe h3 {
+  color: #3b1360;
 }
 
-.feed-post-user-stripe a:hover {
+.feed-post-user-stripe h3:hover {
   color: #6923aa;
+  cursor: pointer;
 }
 
 .feed-post-user-stripe p {
