@@ -96,7 +96,7 @@ class CreatePost extends React.Component {
       formData
     );
     axios
-      .post('/writepost', { restaurant: restaurant, title: title, text: text, image: response.data.url, author: { username: this.props.location.state.username, avatar:this.props.location.state.avatar,recommend: recommend, createdAt: createdAt} })
+      .post('/writepost', { restaurant: restaurant, title: title, text: text, image: response.data.url, author: { username: this.props.location.state.username, avatar:this.props.location.state.avatar}, recommend: recommend, createdAt: createdAt} )
       .then(() => {
         console.log('Succesfully posted')
       })
