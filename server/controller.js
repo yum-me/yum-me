@@ -113,7 +113,8 @@ module.exports = {
   },
   writepost: (req, res) => {
     const { restaurant, title, text, image,author, recommend, createdAt } = req.body;
-    Post.create({restaurant, title, text, image, author, recommend, createdAt})
+    let likes = 0;
+    Post.create({restaurant, title, text, image, author, recommend, createdAt, likes})
       .then(() => res.status(201).send('Succesfully posted'))
       .catch(err => res.status(404).send('Error posting',err))
   },
