@@ -199,10 +199,9 @@ module.exports = {
     .then(response => res.status(200).send(response))
     .catch(err => {res.status(400).send('Error adding comment', err)});
   },
-  //Follow a user, /user.follow
+  //Follow a user, /user/follow
   followUser: (req, res) => {
-    const { username } = req.query;
-    const { followUser } = req.body;
+    const { username, followUser } = req.body;
     User.findOneAndUpdate({username: followUser}, {$inc: {followers: 1}})
     .then(() => User.findOneAndUpdate(username, {$push: {'following': followUser}}))
     .then(response => res.status(200).send(response))
@@ -210,10 +209,9 @@ module.exports = {
   },
   //Unfollow a user /user/unfollow
   unfollowUser: (req, res) => {
-    const { username } = req.query;
-    const { followUser } = req.body;
+    const { username, followUser } = req.body;
     User.findOneAndUpdate({username: followUser}, {$inc: {followers: -1}})
-    .then(() => User.update({username: username}, {$pull: {'following': followUser}}))
+    .then(() => User.findOneAndUpdate({username: username}, {$pull: {'following': followUser}}))
     .then(response => res.status(200).send(response))
     .catch(err => res.status(404).send('Error with unFollowUser', err))
   },
@@ -222,12 +220,13 @@ module.exports = {
     const { username, followUser} = req.query;
     User.find({username})
     .then(data => {
+      let bool = false;
       for(let i = 0; i < data[0]['following'].length; i++) {
         if(data[0]['following'][i] === followUser) {
-          res.status(200).send(true)
+          bool = true;
         }
       }
-      res.status(200).send(false) 
+      res.status(200).send(bool); 
     })
     .catch(err => res.status(404).send('Error with checkFollow', err))
   }
