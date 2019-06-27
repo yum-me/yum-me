@@ -35,10 +35,17 @@ class Navbar extends React.Component {
 
   render() {
     const auth = this.state.loggedIn ? 
-      <a href="#" className="nav-links"><FaUser />   {this.state.username}</a> :
-      <Link to="/register">
-      <a href="#" className="nav-links">login / signup</a>
-      </Link>
+      <div>
+        <a href="#" className="nav-links"><FaUser />   {this.state.username}</a>
+      </div> :
+      <div>
+        <Link to="/login">
+          <a href="#" className="nav-links">login</a>
+        </Link>
+        <Link to="/register">
+          <a href="#" className="nav-links">signup</a>
+        </Link>
+      </div>
     
     return(
       <div>
@@ -65,23 +72,28 @@ class Navbar extends React.Component {
             </div>
           </div>
           <ul className="main-nav" id="js-menu">
-            <Link to={{pathname: `/browse`, state: {username: this.state.username, avatar: this.state.avatar}}}>
-              <li>
-                <a href="#" className="nav-links">browse</a>
-              </li>
-            </Link>
-
+            <div>
+              <Link to={{pathname: `/browse`, state: {username: this.state.username, avatar: this.state.avatar}}}>
+                <li>
+                  <a href="#" className="nav-links">browse</a>
+                </li>
+              </Link>              
+            </div>
+            <div>
               <Link to={{pathname: `/createpost`, state: {username: this.state.username, avatar: this.state.avatar}}}>
-            <li>
-
-                <a href="#" className="nav-links">
-                  create post
-                  </a>
-            </li>
+                <li>
+                    <a href="#" className="nav-links">
+                      create post
+                      </a>
+                </li>
               </Link>
-            <li>
-              {auth}
-            </li>
+            </div>
+            <div>
+              <li>
+                {auth}
+              </li>
+
+            </div>
           </ul>
         </nav>
       </div>
