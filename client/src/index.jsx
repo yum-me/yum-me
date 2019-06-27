@@ -12,5 +12,5 @@ import ShowPost from './Components/ShowPost/ShowPost.jsx';
 
 
 
-ReactDOM.render(<CreatePost />, document.getElementById('app'));
+ReactDOM.render(<Login />, document.getElementById('app'));
 
