@@ -16,7 +16,7 @@ class CreatePost extends React.Component {
       title: "",
       restaurant: "",
       text: "",
-      author: "Ufukerdem",
+      author: "",
       location: "",
       image: null,
       file: null
@@ -82,7 +82,7 @@ class CreatePost extends React.Component {
       formData
     );
     axios
-      .post('/writepost', { restaurant: restaurant, title: title, text: text, image: response.data.url, author: author })
+      .post('/writepost', { restaurant: restaurant, title: title, text: text, image: response.data.url, author: this.props.location.state })
       .then(() => {
         console.log('Succesfully posted')
       })
@@ -100,6 +100,7 @@ class CreatePost extends React.Component {
 
 
   render() {
+    console.log(this.props)
     var style1 = {
       position: "relative",
       right: "80px"

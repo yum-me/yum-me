@@ -25,20 +25,24 @@ class Feed extends React.Component {
   }
 
   fetchUserData () {
-    axios.get('/user', {params: {username: 'ufukmehmetoglu'}})
+    const { username } = this.props.location.state;
+    axios.get('/user', {params: {username: username}})
     .then(({data}) => this.setState({userInfo: data[0]}))
     .catch(err => console.error('Error with get user info'))
   }
 
   fetchUserFeed () {
-    axios.get('/feed', {params: {username: 'ufukmehmetoglu'}})
+    const { username } = this.props.location.state;
+    axios.get('/feed', {params: {username: username}})
     .then(({data}) => this.setState({feed: data}))
     .catch(err => console.error('Error with get user info'))
   }
 
   fetchUserPosts () {
-    axios.get('/userPosts', {params: {username: 'ufukmehmetoglu'}})
-    .then(({data}) => this.setState({posts: data.length}))
+    const { username } = this.props.location.state;
+    axios.get('/userPosts', {params: {username: username}})
+    .then((data) => console.log('number of posts', data))
+    // .then(({data}) => this.setState({posts: data.length}))
     .catch(err => console.error('Error with get user info'))
   }
 
@@ -46,10 +50,10 @@ class Feed extends React.Component {
     const { firstName, lastName, username, avatar, following, followers} = this.state.userInfo;
     const { feed } = this.state;
     const followingNum = following ? following.length : null;
-    console.log(this.props)
+    console.log('Feed',this.props)
     return (
       <div>
-        <Navbar />
+        <Navbar username={this.props.location.state.username}/>
         <div className="feed-main">
           <div className="user-info">
             <div className="user-info-inner">

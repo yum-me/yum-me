@@ -9,7 +9,7 @@ class Navbar extends React.Component {
     this.state= {
       loggedIn: false,
       // CHANGE BELOW TO CURRENT USER
-      username: 'kathleen',
+      username: this.props.username,
       term: ''
     };
     this.handleChange = this.handleChange.bind(this);
@@ -33,6 +33,7 @@ class Navbar extends React.Component {
   }
 
   render() {
+    console.log('Navbar', this.state)
     const auth = this.state.loggedIn ? 
       <a href="#" className="nav-links"><FaUser />   {this.state.username}</a> :
       <a href="#" className="nav-links">login / signup</a>
@@ -65,9 +66,14 @@ class Navbar extends React.Component {
             <li>
               <a href="#" className="nav-links">browse</a>
             </li>
+              <Link to={{pathname: `/createpost`, state: this.state.username}}
+>
             <li>
-              <a href="#" className="nav-links">create post</a>
+                <a href="#" className="nav-links">
+                  create post
+                  </a>
             </li>
+              </Link>
             <li>
               {auth}
             </li>
