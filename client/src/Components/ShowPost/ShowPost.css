@@ -120,7 +120,6 @@
 
 .post-like-icon:hover, .post-comment-icon:hover {
   cursor: pointer;
-  color: #6923aa;
 }
 
 .post-like-icon-activated {
