@@ -100,6 +100,10 @@
   flex: 1;
 }
 
+.show-post-title h1 {
+  padding-right: 10px;
+}
+
 .post-recommend-img {
   width: 50px;
 }

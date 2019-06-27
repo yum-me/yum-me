@@ -58,7 +58,7 @@ class Feed extends React.Component {
           <h3>It looks like you're not following anyone yet!</h3>
           <div className="feed-no-feed-browse">
             <p> 
-              <Link to={{pathname: `/browse`, state: {username: this.state.username, avatar: this.state.avatar}}}>
+              <Link to={{pathname: `/browse`, state: {username: username, avatar: avatar}}}>
                 <span>Browse </span>
               </Link>   
               some posts to find people to follow.

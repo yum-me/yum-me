@@ -128,7 +128,7 @@ class CreatePost extends React.Component {
       return (
 
         <div>
-          <NavBar />
+          <NavBar username={this.props.location.state.username} avatar={this.props.location.state.avatar}/>
 
           <div className="createPostMain">
 
