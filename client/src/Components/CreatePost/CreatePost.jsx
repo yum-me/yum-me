@@ -33,7 +33,7 @@ class CreatePost extends React.Component {
   handleChange(e) {
     this.setState({
       [e.target.name]: e.target.value
-    }, console.log(this.state))
+    })
   }
   handleRecommend(e) {
     if(e.target.value === 'recommendYes') {
@@ -50,7 +50,7 @@ class CreatePost extends React.Component {
     e.preventDefault();
     this.setState({
       file: e.target.files[0]
-    }, console.log("image", this.state.file))
+    })
   }
   handlePickRestaurant(option) {
     this.setState({
@@ -114,7 +114,6 @@ class CreatePost extends React.Component {
 
 
   render() {
-    console.log(this.props)
     var style1 = {
       position: "relative",
       right: "130px"
