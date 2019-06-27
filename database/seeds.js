@@ -179,7 +179,8 @@ const calvinComment1 = {
   author: {
     username: 'calvin197',
     avatar: 'https://avatars2.githubusercontent.com/u/44663669?s=400&v=4'
-  }
+  },
+  createdAt: new Date()
 };
 
 const calvinComment2 = {
@@ -187,7 +188,8 @@ const calvinComment2 = {
   author: {
     username: 'calvin197',
     avatar: 'https://avatars2.githubusercontent.com/u/44663669?s=400&v=4'
-  }
+  },
+  createdAt: new Date()
 };
 
 const jamesComment1 = {
@@ -195,7 +197,8 @@ const jamesComment1 = {
   author: {
     username: 'iAmVeryHandsome',
     avatar: 'https://avatars0.githubusercontent.com/u/31761490?s=460&v=4'
-  }
+  },
+  createdAt: new Date()
 };
 
 const jamesComment2 = {
@@ -203,7 +206,8 @@ const jamesComment2 = {
   author: {
     username: 'iAmVeryHandsome',
     avatar: 'https://avatars0.githubusercontent.com/u/31761490?s=460&v=4'
-  }
+  },
+  createdAt: new Date()
 }
 
 // POSTS 

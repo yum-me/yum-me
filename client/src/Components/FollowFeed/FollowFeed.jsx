@@ -91,7 +91,7 @@ class FollowFeed extends React.Component {
 
     return(
       <div>
-        <Navbar username={currentUser} avatar={currentAvatar}/>
+        <Navbar username={username} avatar={avatar}/>
         <div className="user-user-info-container">
           <img className="user-avatar-photo" src={avatar} />
           <div className="user-user-info">
