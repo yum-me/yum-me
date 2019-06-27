@@ -28,7 +28,7 @@ class AppRouter extends React.Component {
          <NavBar />
   
           <Route path="/" exact render={() => <Login username={this.state.username} isAuthed={true} />} />
-          <Route path="/feed" component={Feed} />} />
+          <Route path="/feed" component={Feed} />
           <Route path="/follow/:username" component={FollowFeed}/>
           <Route path="/post" component={ShowPost} />
           <Route path="/createpost" component={CreatePost} />

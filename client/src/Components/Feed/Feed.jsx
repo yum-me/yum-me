@@ -53,7 +53,7 @@ class Feed extends React.Component {
     console.log('Feed',this.props)
     return (
       <div>
-        <Navbar username={this.props.location.state.username}/>
+        <Navbar username={this.props.location.state.username} avatar={this.props.location.state.avatar}/>
         <div className="feed-main">
           <div className="user-info">
             <div className="user-info-inner">
