@@ -51,14 +51,12 @@ class FollowFeed extends React.Component {
   }
 
   handleFollowUser () {
-    // axios.post('/user/follow', {followUser: 'kathog'}, {params: {username: 'ufukmehmetoglu'}})
     axios.post('/user/follow', {followUser: 'kathog', username: 'ufukmehmetoglu'})
     .then(() => this.setState({followStatus: true}, this.fetchUserData()))
     .catch(() => console.error('Error with followUser'))
   }
 
   handleUnfollowUser () {
-    // axios.post('/user/unfollow', {followUser: 'kathog'}, {params: {username: 'ufukmehmetoglu'}})
     axios.post('/user/unfollow', {followUser: 'kathog', username: 'ufukmehmetoglu'})
     .then(() => this.setState({followStatus: false}, this.fetchUserData()))
     .catch(() => console.error('Error with followUser'))
@@ -107,34 +105,6 @@ class FollowFeed extends React.Component {
         </div>
       </div>
     );
-    // return (
-    //   <div>
-    //     <Navbar />
-    //     <div className="user-user-main">
-    //       <div className="user-user-info">
-    //         <div className="user-user-info-inner">
-    //           <div className="user-feed-stripe"></div>
-    //           <img className="user-avatar-photo" src={avatar} />
-    //           <div className="user-feed-name">
-    //             <h4>{firstName} {lastName}</h4>
-    //             <p>@{username}</p>
-    //             <p>{location}</p>
-    //           </div>
-    //           <div className="feed-user-info-details">
-    //             <p><span>{this.state.posts}</span> posts</p>
-    //             <p><span>{followers}</span> followers</p>
-    //             <p><span>{followingNum}</span> following</p>
-    //             {followStatus ? <button onClick={this.handleUnfollowUser}>Unfollow</button> : <button onClick={this.handleFollowUser}>Follow</button>}
-    //             {/* <button onClick={this.handleUnfollowUser}>Unfollow</button> */}
-    //           </div>
-    //         </div>
-    //       </div>
-    //       <div className="user-post-main">
-    //         {feed.map((item, index) => <FollowPost item={item} key={index}/>)}
-    //       </div>
-    //     </div>
-    //   </div>
-    // )
   }
 }
 
