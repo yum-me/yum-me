@@ -49,6 +49,23 @@ class Feed extends React.Component {
     const { firstName, lastName, username, avatar, following, followers} = this.state.userInfo;
     const { feed } = this.state;
     const followingNum = following ? following.length : null;
+    const feedSection = this.state.feed.length > 0 ? 
+      <div className="feed-post-main">
+        {feed.map((item, index) => <FeedPost item={item} key={index}/>)}
+      </div> : 
+      <div className="feed-post-main">
+        <div className="feed-no-feed">
+          <h3>It looks like you're not following anyone yet!</h3>
+          <div className="feed-no-feed-browse">
+            <p> 
+              <Link to={{pathname: `/browse`, state: {username: this.state.username, avatar: this.state.avatar}}}>
+                <span>Browse </span>
+              </Link>   
+              some posts to find people to follow.
+            </p>
+          </div>
+        </div>
+      </div>
     return (
       <div>
         <Navbar username={this.props.location.state.username} avatar={this.props.location.state.avatar}/>
@@ -68,9 +85,7 @@ class Feed extends React.Component {
               </div>
             </div>
           </div>
-          <div className="feed-post-main">
-            {feed.map((item, index) => <FeedPost item={item} key={index}/>)}
-          </div>
+          {feedSection}
         </div>
       </div>
     )
