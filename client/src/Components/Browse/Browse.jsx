@@ -3,6 +3,7 @@ import axios from 'axios';
 import Navbar from '../Navbar/Navbar.jsx';
 import PostCard from './PostCard/PostCard.jsx';
 import './Browse.css';
+import { Link } from 'react-router-dom';
 
 class Browse extends React.Component {
   constructor(props) {
