@@ -22,6 +22,7 @@ class Navbar extends React.Component {
   }
 
   handleChange(e) {
+    console.log(this.state.term);
     this.setState({
       term: e.target.value
     });
@@ -51,6 +52,10 @@ class Navbar extends React.Component {
       </div>
     
     if(this.state.redirect) {
+      this.setState({
+        redirect: false
+      });
+      console.log("state", this.state);
       if(this.state.username) {
         return <Redirect to={{pathname: `/search/${this.state.term}`, state: { username: this.state.username, avatar: this.state.avatar }}}/>
       } else {
