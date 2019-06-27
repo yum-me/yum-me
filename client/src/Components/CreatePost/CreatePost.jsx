@@ -84,9 +84,7 @@ class CreatePost extends React.Component {
     axios
       .post('/writepost', { restaurant: restaurant, title: title, text: text, image: response.data.url, author: author })
       .then(() => {
-        // console.log('Succesfully posted')
-        <Route exact path="/home" component={Home}/>
-        ReactDOM.render(<Home />, document.getElementById("app"));
+        console.log('Succesfully posted')
       })
       .catch(err => console.log('Error getting', err))
     this.setState({

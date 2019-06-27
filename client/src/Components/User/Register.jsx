@@ -55,8 +55,6 @@ class Register extends React.Component {
     axios 
       .post('/register',{username, firstName, lastName, email, password, password2, avatar: response.data.url, location})
       .then(() => {
-        <Route exact path="/login" component={Login} />
-        ReactDOM.render(<Login />, document.getElementById("app"));
         console.log('Succesfully registered')
       })
       .catch(err => console.log(err))

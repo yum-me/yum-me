@@ -29,8 +29,6 @@ class Login extends React.Component {
     axios
         .get('/login', {params: {email, password}})
         .then((data) => {
-          <Route exact path="/home" component={Home} />
-          ReactDOM.render(<Home />, document.getElementById("app"));
           console.log('Succesfully Login')
         })
         .catch(err => console.log("Error login", err))
