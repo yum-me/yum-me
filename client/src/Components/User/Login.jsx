@@ -50,9 +50,7 @@ class Login extends React.Component {
   render() {
     const {redirect, username, avatar} = this.state;
     if(redirect){
-      console.log(username)
       return <Redirect to={{pathname: '/feed', state: { username:username, avatar: avatar }}}/>
-
     }
     return (
       <div>
