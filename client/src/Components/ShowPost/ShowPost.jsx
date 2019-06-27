@@ -50,8 +50,9 @@ class ShowPost extends React.Component {
   handleSubmit (event) {
     const { text } = this.state;
     const { id } = this.props.location;
+    const { username, avatar } = this.props.location;
     event.preventDefault()
-    axios.post('/comment', {text}, {params: {_id: id}})
+    axios.post('/comment', {text}, {params: {_id: id, username: username, avatar: avatar}})
     .then(() => this.fetchOnePost())
     .catch(() => console.error('Error with adding comment'))
     
@@ -73,6 +74,7 @@ class ShowPost extends React.Component {
   }
 
   render () {
+    console.log(this.props)
     const { username, avatar } = this.props.location;
     const { author, createdAt, image, likes, recommend, restaurant, text, title } = this.state.post;
     const { comments } = this.state;
