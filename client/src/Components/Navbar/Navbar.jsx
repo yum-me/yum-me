@@ -50,7 +50,7 @@ class Navbar extends React.Component {
             <a href="#" className="nav-logo">
               <img src="https://res.cloudinary.com/kjhogan/image/upload/v1561339707/happy_dbmo3c_ihdbmd.png"></img>        
             </a>
-            <Link to='/'>
+            <Link to='/feed'>
             <a href="#" className="nav-logo">
               yum.me      
             </a>
@@ -65,11 +65,13 @@ class Navbar extends React.Component {
             </div>
           </div>
           <ul className="main-nav" id="js-menu">
-            <li>
-              <a href="#" className="nav-links">browse</a>
-            </li>
+            <Link to="/browse">
+              <li>
+                <a href="#" className="nav-links">browse</a>
+              </li>
+            </Link>
 
-              <Link to={{pathname: `/createpost`, state: {username: this.state.username, avatar: this.state.avatar}}}
+              <Link to={{pathname: `/createpost`, state: {username: this.state.username, avatar: this.state.avatar}}}>
             <li>
 
                 <a href="#" className="nav-links">

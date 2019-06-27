@@ -2,6 +2,7 @@ import React from 'react';
 import './PostCard.css';
 import { FaCommentAlt, FaThumbsUp } from 'react-icons/fa';
 import moment from 'moment';
+import { Link } from 'react-router-dom';
 
 class PostCard extends React.Component {
   constructor(props) {
@@ -24,6 +25,7 @@ class PostCard extends React.Component {
     }
     return(
       <div className="post-card">
+        <Link to={{pathname: `post`, id: post._id}}>
         <div className="post-card-user">
           <img className="post-card-avatar" src={post.author.avatar}></img>
           {/* INSERT USER PROFILE LINK BELOW */}
@@ -46,6 +48,7 @@ class PostCard extends React.Component {
             </div>
           </div>
         </div>
+        </Link>
       </div>
     );
   }
