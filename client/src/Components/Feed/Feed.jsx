@@ -41,8 +41,7 @@ class Feed extends React.Component {
   fetchUserPosts () {
     const { username } = this.props.location.state;
     axios.get('/userPosts', {params: {username: username}})
-    .then((data) => console.log('number of posts', data))
-    // .then(({data}) => this.setState({posts: data.length}))
+    .then(({data}) => this.setState({posts: data.length}))
     .catch(err => console.error('Error with get user info'))
   }
 
@@ -50,7 +49,6 @@ class Feed extends React.Component {
     const { firstName, lastName, username, avatar, following, followers} = this.state.userInfo;
     const { feed } = this.state;
     const followingNum = following ? following.length : null;
-    console.log('Feed',this.props)
     return (
       <div>
         <Navbar username={this.props.location.state.username} avatar={this.props.location.state.avatar}/>
