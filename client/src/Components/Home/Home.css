@@ -2,6 +2,10 @@ body {
   background-color: #e8efeb;
 }
 
+a{
+  text-decoration: none;
+}
+
 .landing-body {
   background: url("https://images.unsplash.com/photo-1526234362653-3b75a0c07438?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2089&q=80");
   background-size: cover;
