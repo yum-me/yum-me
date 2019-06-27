@@ -56,7 +56,7 @@ button {
   width: 180px;
   font-size: 16px;
   cursor: pointer;
-  background-color: rgba(255,255,255,0.8);
+  background-color: rgba(255,255,255,0.9);
 }
 
 .button-foil:hover {
@@ -75,12 +75,16 @@ button {
   font-size: 7em;
   position: relative;
   top: 30px;
-  text-shadow: 0px 4px 3px rgba(0,0,0,0.7),
-               0px -3px 2px rgba(0,0,0,0.5),
-               3px 0px 2px rgba(0,0,0,0.5),
-               -3px 0px 2px rgba(0,0,0,0.5),
-               0px 8px 13px rgba(0,0,0,0.1),
-               0px 8px 23px rgba(0,0,0,0.1);
+  text-shadow: 0px -2px 3px rgba(0,0,0,0.3),
+               0px 2px 3px rgba(0,0,0,0.3),
+               2px 0px 3px rgba(0,0,0,0.3),
+               -2px 0px 3px rgba(0,0,0,0.3),
+               2px -2px 3px rgba(0,0,0,0.3),
+               2px 2px 3px rgba(0,0,0,0.3),
+               -2px 2px 3px rgba(0,0,0,0.3),
+               -2px -2px 3px rgba(0,0,0,0.3),
+               0px -8px 13px rgba(0,0,0,0.1),
+               0px -8px 23px rgba(0,0,0,0.1);
 }
 
 .landing-h2 {
@@ -91,12 +95,16 @@ button {
   font-size: 3.5em;
   position: relative;
   top: 70px;
-  text-shadow: 0px 4px 3px rgba(0,0,0,0.7),
-               0px -2px 2px rgba(0,0,0,0.5),
-               2px 0px 2px rgba(0,0,0,0.5),
-               -2px 0px 2px rgba(0,0,0,0.5),
-               0px 8px 13px rgba(0,0,0,0.2),
-               0px 8px 23px rgba(0,0,0,0.1);
+  text-shadow: 0px -2px 2px rgba(0,0,0,0.3),
+               0px 2px 2px rgba(0,0,0,0.3),
+               2px 0px 2px rgba(0,0,0,0.3),
+               -2px 0px 2px rgba(0,0,0,0.3),
+               2px -2px 2px rgba(0,0,0,0.3),
+               2px 2px 2px rgba(0,0,0,0.3),
+               -2px 2px 2px rgba(0,0,0,0.3),
+               -2px -2px 2px rgba(0,0,0,0.3),
+               0px -8px 13px rgba(0,0,0,0.1),
+               0px -8px 23px rgba(0,0,0,0.1);
 }
 
 .landing-container img {

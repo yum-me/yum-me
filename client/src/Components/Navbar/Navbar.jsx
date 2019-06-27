@@ -1,6 +1,7 @@
 import React from 'react';
 import './Navbar.css';
 import { FaBars, FaUser, FaSearch } from 'react-icons/fa';
+import { Link } from 'react-router-dom';
 
 class Navbar extends React.Component {
   constructor(props) {
@@ -46,9 +47,11 @@ class Navbar extends React.Component {
             <a href="#" className="nav-logo">
               <img src="https://res.cloudinary.com/kjhogan/image/upload/v1561339707/happy_dbmo3c_ihdbmd.png"></img>        
             </a>
+            <Link to='/'>
             <a href="#" className="nav-logo">
-              yum.me        
+              yum.me      
             </a>
+            </Link>
           </div>
           <div className="nav-search-input-container">
             <div className="nav-search-flex">

@@ -26,7 +26,7 @@ class ShowPost extends React.Component {
   }
 
   fetchOnePost () {
-    axios.get('/post', {params: {_id: '5d10404f189fe79e615a8889'}})
+    axios.get('/post', {params: {_id: '5d14205ae7946082e5f921c6'}})
     .then(({data}) => this.setState({post: data[0]}))
     .then(() => {
       return this.state.post.comments.sort(function(a, b) {
@@ -48,7 +48,7 @@ class ShowPost extends React.Component {
   handleSubmit (event) {
     const { text } = this.state;
     event.preventDefault()
-    axios.post('/comment', {text}, {params: {_id: '5d10404f189fe79e615a8889'}})
+    axios.post('/comment', {text}, {params: {_id: '5d14205ae7946082e5f921c6'}})
     .then(() => this.fetchOnePost())
     .catch(() => console.error('Error with adding comment'))
     
@@ -57,11 +57,11 @@ class ShowPost extends React.Component {
   handleLikePost () {
     this.setState({like: !this.state.like}, () => {
       if(this.state.like) {
-        axios.post('/post/like', {params: {_id: '5d10404f189fe79e615a8889'}})
+        axios.post('/post/like', {_id: '5d14205ae7946082e5f921c6'})
         .then(() => this.fetchOnePost())
         .catch(() => console.error('Error with liking post'));
       } else {
-        axios.post('/post/unlike', {params: {_id: '5d10404f189fe79e615a8889'}})
+        axios.post('/post/unlike', {_id: '5d14205ae7946082e5f921c6'})
         .then(() => this.fetchOnePost())
         .catch(() => console.error('Error with unliking post'));
       }
