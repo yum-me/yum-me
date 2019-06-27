@@ -59,18 +59,20 @@ class ShowPost extends React.Component {
   }
   
   handleLikePost () {
-    const { id } = this.props.location;
-    this.setState({like: !this.state.like}, () => {
-      if(this.state.like) {
-        axios.post('/post/like', {_id: id})
-        .then(() => this.fetchOnePost())
-        .catch(() => console.error('Error with liking post'));
-      } else {
-        axios.post('/post/unlike', {_id: id})
-        .then(() => this.fetchOnePost())
-        .catch(() => console.error('Error with unliking post'));
-      }
-    })
+    const { id, username } = this.props.location;
+    if(username.length > 0) {
+      this.setState({like: !this.state.like}, () => {
+        if(this.state.like) {
+          axios.post('/post/like', {_id: id})
+          .then(() => this.fetchOnePost())
+          .catch(() => console.error('Error with liking post'));
+        } else {
+          axios.post('/post/unlike', {_id: id})
+          .then(() => this.fetchOnePost())
+          .catch(() => console.error('Error with unliking post'));
+        }
+      })
+    }
   }
 
   render () {
@@ -89,6 +91,19 @@ class ShowPost extends React.Component {
       <img className="post-recommend-img" src="https://res.cloudinary.com/kjhogan/image/upload/v1536097829/happy_dbmo3c.png"></img> :
       <img className="post-recommend-img" src="https://res.cloudinary.com/kjhogan/image/upload/v1536097829/sad_fcfqhu.png"></img>
     const likeIcon = this.state.like ? <FaThumbsUp className="post-like-icon-activated" /> : <FaThumbsUp className="post-like-icon" />;
+    console.log(username.length);
+    const commentBox = username.length > 0 ? 
+      <form>
+        <textarea className="comment-input" name="text" placeholder="Write a comment..." onChange={this.handleChange}/>
+        <button type="submit" onClick={this.handleSubmit}><FaTelegramPlane /></button>
+      </form> :
+      <div className="cannot-comment">
+        <p><em>Please </em> 
+          <Link to="/login">
+            <span className="cannot-comment-login">log in</span>
+          </Link>
+        <em> to comment.</em></p>
+      </div>
     return (
       <div> 
         <NavBar username={username} avatar={avatar}/>
@@ -121,10 +136,7 @@ class ShowPost extends React.Component {
                   <p><span><FaCommentAlt className="post-comment-icon"/></span> {comments ? comments.length : ''}</p>
                   <p><span onClick={this.handleLikePost}>{likeIcon}</span> {likes}</p>
                 </div>
-                <form>
-                  <textarea className="comment-input" name="text" placeholder="Write a comment..." onChange={this.handleChange}/>
-                  <button type="submit" onClick={this.handleSubmit}><FaTelegramPlane /></button>
-                </form>
+                {commentBox}
               </div>
               {commentSection}
             </div>

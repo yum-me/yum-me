@@ -41,6 +41,9 @@ class Navbar extends React.Component {
         <Link to={{pathname: `/follow/${this.state.username}`, currentUser: this.state.username, currentAvatar: this.state.avatar}} >
           <a href="#" className="nav-links"><FaUser />   {this.state.username}</a>
         </Link>
+        <Link to={{pathname: `/browse`, state: {username: '', avatar: ''}}}>
+          <a href="#" className="nav-links">logout</a>
+        </Link>
       </div> :
       <div>
         <Link to="/login">
@@ -50,6 +53,22 @@ class Navbar extends React.Component {
           <a href="#" className="nav-links">signup</a>
         </Link>
       </div>
+    
+    const createPostLink = this.state.username ? 
+      <Link to={{pathname: `/createpost`, state: {username: this.state.username || '', avatar: this.state.avatar || ''}}}>
+        <li>
+          <a href="#" className="nav-links">
+            create post
+          </a>
+        </li>
+      </Link> :
+      <Link to={{pathname: `/login`, state: {username: '', avatar: ''}}}>
+        <li>
+          <a href="#" className="nav-links">
+            create post
+          </a>
+        </li>
+      </Link>
     
     if(this.state.redirect) {
       this.setState({
@@ -73,9 +92,9 @@ class Navbar extends React.Component {
               <img src="https://res.cloudinary.com/kjhogan/image/upload/v1561339707/happy_dbmo3c_ihdbmd.png"></img>        
             </a>
             <Link to={{pathname: `/feed`, state: {username: this.props.username, avatar: this.props.avatar}}}>
-            <a href="#" className="nav-logo">
-              yum.me      
-            </a>
+              <a href="#" className="nav-logo">
+                yum.me      
+              </a>
             </Link>
           </div>
           <div className="nav-search-input-container">
@@ -88,26 +107,19 @@ class Navbar extends React.Component {
           </div>
           <ul className="main-nav" id="js-menu">
             <div>
-              <Link to={{pathname: `/browse`, state: {username: this.state.username, avatar: this.state.avatar}}}>
+              <Link to={{pathname: `/browse`, state: {username: this.state.username || '', avatar: this.state.avatar || ''}}}>
                 <li>
                   <a href="#" className="nav-links">browse</a>
                 </li>
               </Link>              
             </div>
             <div>
-              <Link to={{pathname: `/createpost`, state: {username: this.state.username, avatar: this.state.avatar}}}>
-                <li>
-                    <a href="#" className="nav-links">
-                      create post
-                      </a>
-                </li>
-              </Link>
+              {createPostLink}
             </div>
             <div>
               <li>
                 {auth}
               </li>
-
             </div>
           </ul>
         </nav>
