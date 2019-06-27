@@ -96,9 +96,9 @@ class ShowPost extends React.Component {
                 <div className="show-post-user">
                   <img className="show-post-avatar" src={author ? author.avatar : ''} />
                   <div>
-                  <Link to={{pathname: `/follow/${postAuthor}`, state: 'username'}} >
+                  <Link to={{pathname: `/follow/${postAuthor}`, currentUser: username, currentAvatar: avatar}} >
                     <h3>{postAuthor}</h3>
-                    </Link>
+                  </Link>
                     <p>{moment(createdAt).fromNow()}</p>
                   </div>
                 </div>
@@ -119,7 +119,7 @@ class ShowPost extends React.Component {
                 </form>
               </div>
               <div className="show-post-comments">
-                {comments ? comments.map((item, index) => <PostComment item={item} key={index} />): ''}
+                {comments ? comments.map((item, index) => <PostComment item={item} key={index} currentUser={username} currentAvatar={avatar}/>): ''}
               </div>
             </div>
           </div>
