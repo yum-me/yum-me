@@ -74,6 +74,7 @@ module.exports = {
             }
             if (isMatch) {
               res.status(200).send(user)
+
             } else {
               res.status(404).send('Wrong email or password')
             }

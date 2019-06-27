@@ -11,8 +11,8 @@ const ufuk = {
   avatar: 'https://avatars1.githubusercontent.com/u/43357768?s=460&v=4',
   password: 'password',
   location: 'Los Angeles, CA',
-  followers: 0,
-  following: ['Matt4theWin', 'kathog']
+  followers: 3,
+  following: ['Matt4theWin', 'kathog', 'calvin197', 'iAmVeryHandsome']
 };
 
 const matt = {
@@ -23,8 +23,8 @@ const matt = {
   avatar: 'https://avatars0.githubusercontent.com/u/45842060?s=460&v=4',
   password: 'password',
   location: 'Orange, CA',
-  followers: 0,
-  following: ['ufukmehmetoglu', 'kathog']
+  followers: 3,
+  following: ['ufukmehmetoglu', 'kathog', 'calvin197', 'iAmVeryHandsome']
 };
 
 const kathleen = {
@@ -35,11 +35,35 @@ const kathleen = {
   avatar: 'https://avatars2.githubusercontent.com/u/25232945?s=460&v=4',
   password: 'password',
   location: 'Seattle, WA',
-  followers: 0,
-  following: ['ufukmehmetoglu', 'Matt4theWin']
+  followers: 3,
+  following: ['ufukmehmetoglu', 'Matt4theWin', 'calvin197', 'iAmVeryHandsome']
 };
 
-let userData = [ufuk, matt, kathleen];
+const calvin = {
+  username: 'calvin197',
+  email: 'calvin@gmailz.com',
+  firstName: 'Calvin',
+  lastName: 'Shum',
+  avatar: 'https://avatars2.githubusercontent.com/u/44663669?s=400&v=4',
+  password: 'password',
+  location: 'Calvin City, Hong Kong',
+  followers: 3,
+  following: ['ufukmehmetoglu', 'Matt4theWin', 'kathog', 'iAmVeryHandsome']
+}
+
+const james = {
+  username: 'iAmVeryHandsome',
+  email: 'james@kim.com',
+  firstName: 'James',
+  lastName: 'Kim',
+  avatar: 'https://avatars0.githubusercontent.com/u/31761490?s=460&v=4',
+  password: 'password',
+  location: 'Gangnam, South Korea',
+  followers: 4,
+  following: ['ufukmehmetoglu', 'Matt4theWin', 'kathog', 'calvin197']
+}
+
+let userData = [ufuk, matt, kathleen, calvin, james];
 
 // COMMENTS
 const ufukComment1 = {
@@ -150,6 +174,38 @@ const kathleenComment4 = {
   createdAt: new Date()
 };
 
+const calvinComment1 = {
+  text: 'u guys drunk pussies?',
+  author: {
+    username: 'calvin197',
+    avatar: 'https://avatars2.githubusercontent.com/u/44663669?s=400&v=4'
+  }
+};
+
+const calvinComment2 = {
+  text: 'I solved today\'s toy problem in literally 40 seconds.',
+  author: {
+    username: 'calvin197',
+    avatar: 'https://avatars2.githubusercontent.com/u/44663669?s=400&v=4'
+  }
+};
+
+const jamesComment1 = {
+  text: '530 people offered me a job today.',
+  author: {
+    username: 'iAmVeryHandsome',
+    avatar: 'https://avatars0.githubusercontent.com/u/31761490?s=460&v=4'
+  }
+};
+
+const jamesComment2 = {
+  text: 'I am very rich and handsome.',
+  author: {
+    username: 'iAmVeryHandsome',
+    avatar: 'https://avatars0.githubusercontent.com/u/31761490?s=460&v=4'
+  }
+}
+
 // POSTS 
 const ufukPost1 = {
   restaurant: 'Salvo',
@@ -163,7 +219,7 @@ const ufukPost1 = {
     username: 'ufukmehmetoglu',
     avatar: 'https://avatars1.githubusercontent.com/u/43357768?s=460&v=4'
   },
-  comments: [mattComment1, kathleenComment1]
+  comments: [mattComment1, kathleenComment1, calvinComment1]
 };
 
 const ufukPost2 = {
@@ -178,7 +234,7 @@ const ufukPost2 = {
     username: 'ufukmehmetoglu',
     avatar: 'https://avatars1.githubusercontent.com/u/43357768?s=460&v=4'
   },
-  comments: [mattComment2, kathleenComment4]
+  comments: [mattComment2, kathleenComment4, jamesComment1]
 };
 
 const mattPost1 = {
@@ -193,7 +249,7 @@ const mattPost1 = {
     username: 'Matt4theWin',
     avatar: 'https://avatars0.githubusercontent.com/u/45842060?s=460&v=4'
   },
-  comments: [ufukComment1, kathleenComment3]
+  comments: [ufukComment1, kathleenComment3, calvinComment2]
 };
 
 const mattPost2 = {
@@ -208,7 +264,7 @@ const mattPost2 = {
     username: 'Matt4theWin',
     avatar: 'https://avatars0.githubusercontent.com/u/45842060?s=460&v=4'
   },
-  comments: [ufukComment2, kathleenComment2]
+  comments: [ufukComment2, kathleenComment2, jamesComment2]
 };
 
 const kathleenPost1 = {
@@ -223,7 +279,7 @@ const kathleenPost1 = {
     username: 'kathog',
     avatar: 'https://avatars2.githubusercontent.com/u/25232945?s=460&v=4'
   },
-  comments: [ufukComment3, mattComment3]
+  comments: [ufukComment3, mattComment3, calvinComment1]
 };
 
 const kathleenPost2 = {
@@ -238,10 +294,40 @@ const kathleenPost2 = {
     username: 'kathog',
     avatar: 'https://avatars2.githubusercontent.com/u/25232945?s=460&v=4'
   },
-  comments: [ufukComment4, mattComment4]
+  comments: [ufukComment4, mattComment4, calvinComment2]
 };
 
-let postData = [ufukPost1, ufukPost2, mattPost1, mattPost2, kathleenPost1, kathleenPost2];
+const calvinPost1 = {
+  restaurant: 'Waffle House',
+  title: 'I Ate Too Many Waffles',
+  text: 'Ultricies mi eget mauris pharetra et ultrices. Tellus in hac habitasse platea. Suscipit adipiscing bibendum est ultricies integer quis auctor elit sed. Habitant morbi tristique senectus et netus et. Consequat interdum varius sit amet mattis vulputate enim. Elit at imperdiet dui accumsan sit amet nulla. Hendrerit gravida rutrum quisque non tellus orci ac. Imperdiet massa tincidunt nunc pulvinar sapien.',
+  image: 'https://images.unsplash.com/photo-1424847651672-bf20a4b0982b?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1950&q=80',
+  recommend: 'Yes',
+  likes: 0,
+  createdAt: new Date(),
+  author: {
+    username: 'calvin197',
+    avatar: 'https://avatars2.githubusercontent.com/u/44663669?s=400&v=4'
+  },
+  comments: [jamesComment2, mattComment3, ufukComment1, kathleenComment3]
+};
+
+const jamesPost1 = {
+  restaurant: 'Liu\'s Dumplings',
+  title: 'Look At These Dumplings',
+  text: 'Ultricies mi eget mauris pharetra et ultrices. Tellus in hac habitasse platea. Suscipit adipiscing bibendum est ultricies integer quis auctor elit sed. Habitant morbi tristique senectus et netus et. Consequat interdum varius sit amet mattis vulputate enim. Elit at imperdiet dui accumsan sit amet nulla. Hendrerit gravida rutrum quisque non tellus orci ac. Imperdiet massa tincidunt nunc pulvinar sapien.',
+  image: 'https://images.unsplash.com/photo-1534422298391-e4f8c172dddb?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1950&q=80',
+  recommend: 'Yes',
+  likes: 0,
+  createdAt: new Date(),
+  author: {
+    username: 'iAmVeryHandsome',
+    avatar: 'https://avatars0.githubusercontent.com/u/31761490?s=460&v=4'
+  },
+  comments: [calvinComment2, mattComment1, ufukComment4, kathleenComment2, calvinComment1]
+};
+
+let postData = [ufukPost1, ufukPost2, mattPost1, mattPost2, kathleenPost1, kathleenPost2, calvinPost1, jamesPost1];
 
 // SEED
 const insertUsers = () => {

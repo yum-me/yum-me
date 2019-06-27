@@ -34,10 +34,11 @@ class Navbar extends React.Component {
   }
 
   render() {
-    console.log('Navbar', this.state)
     const auth = this.state.loggedIn ? 
       <a href="#" className="nav-links"><FaUser />   {this.state.username}</a> :
+      <Link to="/register">
       <a href="#" className="nav-links">login / signup</a>
+      </Link>
     
     return(
       <div>
@@ -67,9 +68,10 @@ class Navbar extends React.Component {
             <li>
               <a href="#" className="nav-links">browse</a>
             </li>
+
               <Link to={{pathname: `/createpost`, state: {username: this.state.username, avatar: this.state.avatar}}}
->
             <li>
+
                 <a href="#" className="nav-links">
                   create post
                   </a>
