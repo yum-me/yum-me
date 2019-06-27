@@ -69,7 +69,7 @@ class Navbar extends React.Component {
               <a href="#" className="nav-links">browse</a>
             </li>
 
-              <Link to={{pathname: `/createpost`, state: {username: this.state.username, avatar: this.state.avatar}}}
+              <Link to={{pathname: `/createpost`, state: {username: this.state.username, avatar: this.state.avatar}}}>
             <li>
 
                 <a href="#" className="nav-links">
