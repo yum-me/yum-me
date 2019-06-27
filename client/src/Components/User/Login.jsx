@@ -5,15 +5,18 @@ import axios from 'axios';
 import Register from './Register.jsx'
 import Home from '../Home/Home.jsx'
 import NavBar from '../Navbar/Navbar.jsx'
-import { Route, Link, BrowserRouter as Router } from "react-router-dom"
+import Feed from '../Feed/Feed.jsx'
+import { Route, Link, BrowserRouter as Router, Redirect } from "react-router-dom"
 
 
 class Login extends React.Component {
-  constructor() {
-    super()
+  constructor(props) {
+    super(props)
     this.state ={ 
       email: "",
-      password: ""
+      password: "",
+      redirect: false, 
+      username: ''
     }
     this.handleChange = this.handleChange.bind(this);
     this.submit = this.submit.bind(this);
@@ -29,12 +32,24 @@ class Login extends React.Component {
     axios
         .get('/login', {params: {email, password}})
         .then((data) => {
-          console.log('Succesfully Login')
+          // console.log('Succesfully Login')
+
+         this.setState({
+          username: data.data,
+           redirect: true  
+         })
         })
         .catch(err => console.log("Error login", err))
   }
 
+
+
   render() {
+    const {redirect, username} = this.state;
+    if(redirect){
+      console.log(username)
+      return <Redirect to={{pathname: '/feed', state: { username:username }}}/>
+    }
     return (
       <div>
         <NavBar />
@@ -50,7 +65,6 @@ class Login extends React.Component {
               <div>
                 <a className="submitRegister"  href="#">
                 <button className="submitRegisterBtn" type="submit">log in</button>
-                {/* <input className="submitRegister input" type="submit" value="Login" /> */}
                 </a>                
               </div>
             </form>
