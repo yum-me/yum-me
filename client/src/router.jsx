@@ -32,6 +32,7 @@ class AppRouter extends React.Component {
           <Route path="/createpost" component={CreatePost} />
           <Route path="/browse" component={Browse} />
           <Route path="/register" component={Register} />
+          <Route path="/login" component={Login} />
           <Route path="/search/:term" component={Search} />
         </div>
       </Router>
