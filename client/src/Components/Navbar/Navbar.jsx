@@ -7,8 +7,6 @@ class Navbar extends React.Component {
   constructor(props) {
     super(props);
     this.state= {
-      loggedIn: false,
-      // CHANGE BELOW TO CURRENT USER
       username: this.props.username,
       avatar: this.props.avatar,
       term: ''
@@ -34,9 +32,11 @@ class Navbar extends React.Component {
   }
 
   render() {
-    const auth = this.state.loggedIn ? 
+    const auth = this.state.username ? 
       <div>
-        <a href="#" className="nav-links"><FaUser />   {this.state.username}</a>
+        <Link to={{pathname: `/follow/${this.state.username}`, currentUser: this.state.username, currentAvatar: this.state.avatar}} >
+          <a href="#" className="nav-links"><FaUser />   {this.state.username}</a>
+        </Link>
       </div> :
       <div>
         <Link to="/login">
