@@ -2,8 +2,10 @@ import React from 'react';
 import './FollowPost.css';
 import moment from 'moment';
 import { FaCommentAlt, FaThumbsUp } from 'react-icons/fa';
+import { Link } from 'react-router-dom';
 
 const FeedPost = props => {
+  const { username, avatar } = props
   const { author, comments, image, likes, recommend, restaurant, text, title, createdAt, _id } = props.item;
   const recommendImage = recommend === "Yes" ? 
     <img className="recommend-img" src="https://res.cloudinary.com/kjhogan/image/upload/v1536097829/happy_dbmo3c.png"></img> :
@@ -11,6 +13,7 @@ const FeedPost = props => {
     
   return (
     <div>
+      <Link to={{pathname: `/post`, id: _id, username: username, avatar: avatar}}>
       <div className="feed-post">
         <div className="feed-post-user-stripe">
           <img className="post-avatar" src={author.avatar}></img>
@@ -31,8 +34,8 @@ const FeedPost = props => {
             <p>{moment(createdAt).fromNow()}</p>
           </div>
         </div>
-
       </div>
+      </Link>
     </div>
   )
 }

@@ -73,13 +73,14 @@ class FollowFeed extends React.Component {
     const { feed } = this.state;
     const followingNum = following ? following.length : null;
     const { followStatus } = this.state;
+    const { currentUser, currentAvatar } = this.props.location;
     const followBtn = followStatus ? 
       <button onClick={this.handleUnfollowUser}>unfollow</button> : 
       <button onClick={this.handleFollowUser}>follow</button>
 
     return(
       <div>
-        <Navbar />
+        <Navbar username={currentUser} avatar={currentAvatar}/>
         <div className="user-user-info-container">
           <img className="user-avatar-photo" src={avatar} />
           <div className="user-user-info">
@@ -100,7 +101,7 @@ class FollowFeed extends React.Component {
         </div>
         <div className="user-user-posts-container">
           <div className="two-col-grid">
-            {feed.map((item, index) => <div className="grid-item hvr-grow"><FollowPost item={item} key={index}/></div>)}
+            {feed.map((item, index) => <div className="grid-item hvr-grow"><FollowPost item={item} key={index} username={currentUser} avatar={currentAvatar}/></div>)}
           </div>
         </div>
       </div>
