@@ -32,7 +32,7 @@ class ShowPost extends React.Component {
     .then(({data}) => this.setState({post: data[0]}))
     .then(() => {
       return this.state.post.comments.sort(function(a, b) {
-        return new Date(b.createdAt) - new Date(a.createdAt);
+        return new Date(a.createdAt) - new Date(b.createdAt);
       });
     })
     .then(data => this.setState({
@@ -76,6 +76,13 @@ class ShowPost extends React.Component {
     const { username, avatar } = this.props.location;
     const { author, createdAt, image, likes, recommend, restaurant, text, title } = this.state.post;
     const { comments } = this.state;
+    const commentSection = this.state.comments.length > 0 ? 
+      <div className="show-post-comments">
+        {comments.map((item, index) => <PostComment item={item} key={index} currentUser={username} currentAvatar={avatar}/>)}
+      </div> : 
+      <div className="show-post-comments-none">
+        <p >No comments posted yet.</p>
+      </div>
     const postAuthor = author ? author.username : null;
     const recommendImage = recommend === "Yes" ? 
       <img className="post-recommend-img" src="https://res.cloudinary.com/kjhogan/image/upload/v1536097829/happy_dbmo3c.png"></img> :
@@ -119,7 +126,7 @@ class ShowPost extends React.Component {
                 </form>
               </div>
               <div className="show-post-comments">
-                {comments ? comments.map((item, index) => <PostComment item={item} key={index} currentUser={username} currentAvatar={avatar}/>): ''}
+                {commentSection}
               </div>
             </div>
           </div>

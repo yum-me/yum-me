@@ -77,6 +77,17 @@ class FollowFeed extends React.Component {
     const followBtn = followStatus ? 
       <button onClick={this.handleUnfollowUser}>unfollow</button> : 
       <button onClick={this.handleFollowUser}>follow</button>
+    const userPostSection = this.state.feed.length > 0 ? 
+      <div className="two-col-grid">
+        {feed.map((item, index) => <div className="grid-item hvr-grow"><FollowPost item={item} key={index} username={currentUser} avatar={currentAvatar}/></div>)}
+      </div> : 
+      <div className="user-no-posts">
+        <h3>It looks like this user hasn't posted anything yet.</h3>
+        <div>
+          <p>Bummer!</p>
+          <img src="https://res.cloudinary.com/kjhogan/image/upload/v1536097829/terrible_ufki2y.png"></img>
+        </div>
+      </div>
 
     return(
       <div>
@@ -100,9 +111,7 @@ class FollowFeed extends React.Component {
           </div>
         </div>
         <div className="user-user-posts-container">
-          <div className="two-col-grid">
-            {feed.map((item, index) => <div className="grid-item hvr-grow"><FollowPost item={item} key={index} username={currentUser} avatar={currentAvatar}/></div>)}
-          </div>
+          {userPostSection}
         </div>
       </div>
     );

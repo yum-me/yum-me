@@ -11,6 +11,8 @@
 
 .user-avatar-photo {
   width: 150px;
+  height: 150px;
+  object-fit: cover;
   border-radius: 50%;
   border: 1px solid rgba(0,0,0,0.2);
 }
@@ -76,6 +78,33 @@
 
 .user-user-posts-container {
   margin-top: 50px;
+}
+
+.user-no-posts {
+  width: 700px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.user-no-posts h3 {
+  color: #3b1360; 
+  margin-bottom: 10px;
+}
+
+.user-no-posts p {
+  color: rgb(37, 37, 37);
+  margin-right: 10px;
+  font-size: 1.1em;
+}
+
+.user-no-posts img {
+  width: 40px;
+}
+
+.user-no-posts div {
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .hvr-grow {
