@@ -17,23 +17,23 @@ class Search extends React.Component {
   }
 
   componentDidMount() {
-    this.fetchPosts();
+    this.handleSearch();
   }
 
-  fetchPosts() {
-    axios.get('/browse')
-      .then(({ data }) => this.setState({
-        posts: data
-      }))
-      .catch(err => console.log('Could not fetch posts: ', err));
-  }
+  // fetchPosts() {
+  //   axios.get('/browse')
+  //     .then(({ data }) => this.setState({
+  //       posts: data
+  //     }))
+  //     .catch(err => console.log('Could not fetch posts: ', err));
+  // }
 
-  handleSearch(term) {
+  handleSearch() {
     this.setState({
-      term: term
+      term: this.props.match.params.term
     }, () => {
       axios.get('/search', {
-        params: { term }
+        params: { term: this.state.term }
       })
       .then(({ data }) => {
         this.setState({
@@ -59,11 +59,9 @@ class Search extends React.Component {
 
     let users = this.state.users.length === 1 ? "user" : "users";
     let posts = this.state.posts.length === 1 ? "post" : "posts";
-
     return(
       <div>
-        {/* HOW TO HANDLE THIS WITH ALL OTHER COMPONENTS USING NAV??? */}
-        <Navbar handleSearch={(term) => this.handleSearch(term)}/>
+        <Navbar />
         <div className="search">
           <h1>Search Results for "{this.state.term}"</h1>
           <div className="search-user-container">

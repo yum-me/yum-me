@@ -1,7 +1,7 @@
 import React from 'react';
 import './Navbar.css';
 import { FaBars, FaUser, FaSearch } from 'react-icons/fa';
-import { Link } from 'react-router-dom';
+import { Link, Redirect } from 'react-router-dom';
 
 class Navbar extends React.Component {
   constructor(props) {
@@ -9,7 +9,8 @@ class Navbar extends React.Component {
     this.state= {
       username: this.props.username,
       avatar: this.props.avatar,
-      term: ''
+      term: '',
+      redirect: false
     };
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
@@ -28,7 +29,9 @@ class Navbar extends React.Component {
 
   handleSubmit(e) {
     e.preventDefault();
-    this.props.handleSearch(this.state.term);
+    this.setState({
+      redirect: true
+    });
   }
 
   render() {
@@ -47,6 +50,13 @@ class Navbar extends React.Component {
         </Link>
       </div>
     
+    if(this.state.redirect) {
+      if(this.state.username) {
+        return <Redirect to={{pathname: `/search/${this.state.term}`, state: { username: this.state.username, avatar: this.state.avatar }}}/>
+      } else {
+        return <Redirect to={{pathname: `/search/${this.state.term}`}}/>
+      }
+    }
     return(
       <div>
         <nav className="navbar">

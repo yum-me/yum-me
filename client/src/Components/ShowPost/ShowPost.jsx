@@ -74,7 +74,6 @@ class ShowPost extends React.Component {
   }
 
   render () {
-    console.log(this.props)
     const { username, avatar } = this.props.location;
     const { author, createdAt, image, likes, recommend, restaurant, text, title } = this.state.post;
     const { comments } = this.state;
@@ -127,9 +126,7 @@ class ShowPost extends React.Component {
                   <button type="submit" onClick={this.handleSubmit}><FaTelegramPlane /></button>
                 </form>
               </div>
-              <div className="show-post-comments">
-                {commentSection}
-              </div>
+              {commentSection}
             </div>
           </div>
         </div>
