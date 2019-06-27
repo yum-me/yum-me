@@ -26,7 +26,7 @@ class ShowPost extends React.Component {
   }
 
   fetchOnePost () {
-    axios.get('/post', {params: {_id: '5d10404f189fe79e615a8889'}})
+    axios.get('/post', {params: {_id: '5d0eb62076ee652e557d865b'}})
     .then(({data}) => this.setState({post: data[0]}))
     .then(() => {
       return this.state.post.comments.sort(function(a, b) {
@@ -48,7 +48,7 @@ class ShowPost extends React.Component {
   handleSubmit (event) {
     const { text } = this.state;
     event.preventDefault()
-    axios.post('/comment', {text}, {params: {_id: '5d10404f189fe79e615a8889'}})
+    axios.post('/comment', {text}, {params: {_id: '5d0eb62076ee652e557d865b'}})
     .then(() => this.fetchOnePost())
     .catch(() => console.error('Error with adding comment'))
     
