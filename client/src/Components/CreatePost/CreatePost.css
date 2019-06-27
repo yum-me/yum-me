@@ -6,10 +6,23 @@
 }
 .createPostMain {
     height: 600px;
-    padding-top: 90px;
+    padding-top: 100px;
+}
+.createPostMain input, .createPostMain textarea {
+    outline: none;
+}
+.createPostFormContainer {
+    background-color: white;
+    border: 1px solid rgba(0,0,0,0.2);
+    border-radius: 4px;
+    padding-top: 40px;
+    padding-bottom: 30px;
+    width: 40vw;
+    min-width: 600px;
+    margin: 0 auto;
 }
 .headerPost {
-    padding-bottom: 10px;
+    margin-bottom: 20px;
 }
 .createForm {
     display: flex;
@@ -19,34 +32,37 @@
 }
 .createInput {
     height: 30px;
-    width: 400px;
-    font-size: 20px;
+    width: 500px;
+    font-size: 0.9em;
     border: none;
-    border-radius: 10px;
+    border-radius: 4px;
     margin-bottom: 10px;
-    background-color: beige;
+    background-color: rgb(240, 241, 242);
+    padding: 15px;
 }
 .createInput::placeholder {
-    padding: 15px;
+    padding: 0;
 }
 .createTextArea {
-    height: 400px;
-    width: 400px;
-    font-size: 20px;
+    height: 280px;
+    width: 500px;
+    font-size: 0.9em;
     border: none;
     top: 238px;
-    border-radius: 10px;
-    background-color: beige;
+    border-radius: 4px;
+    background-color: rgb(240, 241, 242);
+    margin-top: 10px;
+    padding: 15px;
 }
 .createTextArea::placeholder {
-    padding: 15px;
+    padding: 0;
 }
 .createSearch {
     position: relative;
 }
 .createDropDown {
     height: 200px;
-    width: 400px;
+    width: 500px;
     border: none;
     background: #e8daae;
     position: absolute;
@@ -59,10 +75,19 @@
     z-index: -1;
 }
 .createSubmit { 
-    position: relative;
-    left: 149px;
-    top: 10px;
-    width: 106px;
+    margin-top: 20px;
+    width: 100px;
+    height: 40px;
+    border-radius: 20px;
+    border: none;
+    outline: none;
+    background-color: #3b1360;
+    color: white;
+    font-size: 0.8em;
+}
+.createSubmit:hover {
+    background-color: #6923aa;
+    cursor: pointer;
 }
 .searchResult {
     padding-left: 10px;
@@ -70,4 +95,22 @@
 .restaurant {
     padding-left: 20px;
 }
-
+.createRecommend {
+    display: flex;
+    justify-content: left;
+    width: 500px;
+    font-size: 1em;
+    color: rgba(37, 37, 37);
+    margin-top: 10px;
+    align-items: center;
+}
+.recommendContainer {
+    height: 41px;
+    display: flex;
+    align-items: center;
+    margin-left: 20px;
+}
+.createRecommend img {
+    width: 40px;
+    margin-left: 10px;
+}
