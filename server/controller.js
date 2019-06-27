@@ -73,7 +73,7 @@ module.exports = {
               res.status(404).send('Password is wrong')
             }
             if (isMatch) {
-              res.status(200).send(' Succesfully Login')
+              res.status(200).send(user)
             } else {
               res.status(404).send('Wrong email or password')
             }
@@ -108,6 +108,7 @@ module.exports = {
   },
   writepost: (req, res) => {
     const { restaurant, title, text, image,author } = req.body;
+    console.log(req.body)
     Post.create({restaurant, title, text, image, author})
       .then(() => res.status(201).send('Succesfully posted'))
       .catch(err => res.status(404).send('Error posting',err))
