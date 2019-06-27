@@ -5,6 +5,7 @@ import { FaCommentAlt, FaThumbsUp } from 'react-icons/fa';
 import { Link } from 'react-router-dom';
 
 const FeedPost = props => {
+  const { currentUser, currentAvatar } = props;
   const { author, comments, image, likes, recommend, restaurant, text, title, createdAt, _id } = props.item;
   const recommendImage = recommend === "Yes" ? 
     <img className="recommend-img" src="https://res.cloudinary.com/kjhogan/image/upload/v1536097829/happy_dbmo3c.png"></img> :
@@ -17,16 +18,20 @@ const FeedPost = props => {
           <img className="post-avatar" src={author.avatar}></img>
           <div>
             {/* INSERT USER PROFILE LINK BELOW */}
-            <Link to={{pathname: `/follow/${author.username}`, state: 'username'}} >
-              <a href="#">{author.username}</a>
+            <Link to={{pathname: `/follow/${author.username}`, currentUser: currentUser, currentAvatar: currentAvatar}} >
+              {author.username}
             </Link>
             <p><strong>Restaurant: </strong>{restaurant}</p>
           </div>
           <div className="recommend-img-container">{recommendImage}</div>          
         </div>
+        <Link to={{pathname: `/post`, id: _id, username: currentUser, avatar: currentAvatar}}>
         <img className="post-image" src={image} />
+        </Link>
         <div className="post-well">
+        <Link to={{pathname: `/post`, id: _id, username: currentUser, avatar: currentAvatar}}>
           <h3>{title}</h3>
+        </Link>
           <p>{text.slice(0,200)}...</p>
           <div className="post-detail">
             <div><span><FaThumbsUp /></span> {likes} </div>

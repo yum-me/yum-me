@@ -26,13 +26,13 @@ class FollowFeed extends React.Component {
     this.fetchUserData(); 
     this.fetchUserFeed();
     this.fetchUserPosts();
-    this.handleCheckFollow();
   }
 
   fetchUserData () {
     const { username } = this.props.match.params;
     axios.get('/user', {params: {username}})
     .then(({data}) => this.setState({userInfo: data[0]}))
+    .then(() => this.handleCheckFollow())
     .catch(err => console.error('Error with get user info'))
   }
 
@@ -51,24 +51,31 @@ class FollowFeed extends React.Component {
   }
 
   handleFollowUser () {
-    axios.post('/user/follow', {followUser: 'kathog', username: 'ufukmehmetoglu'})
+    const { currentUser } = this.props.location;
+    const { username } = this.state.userInfo;
+    axios.post('/user/follow', {followUser: username, username: currentUser})
     .then(() => this.setState({followStatus: true}, this.fetchUserData()))
     .catch(() => console.error('Error with followUser'))
   }
 
   handleUnfollowUser () {
-    axios.post('/user/unfollow', {followUser: 'kathog', username: 'ufukmehmetoglu'})
+    const { currentUser } = this.props.location;
+    const { username } = this.state.userInfo;
+    axios.post('/user/unfollow', {followUser: username, username: currentUser})
     .then(() => this.setState({followStatus: false}, this.fetchUserData()))
     .catch(() => console.error('Error with followUser'))
   }
 
   handleCheckFollow () {
-    axios.get('/user/follow',{params: {username: 'ufukmehmetoglu', followUser: 'kathog'}})
+    const { currentUser } = this.props.location;
+    const { username } = this.state.userInfo;
+    axios.get('/user/follow',{params: {username: currentUser, followUser: username}})
     .then(({data}) => this.setState({followStatus: data}))
     .catch(err => console.error('Error with handleCheckFollow'))
   }
 
   render () {
+    console.log(this.props)
     const { firstName, lastName, username, avatar, following, followers, location } = this.state.userInfo;
     const { feed } = this.state;
     const followingNum = following ? following.length : null;
