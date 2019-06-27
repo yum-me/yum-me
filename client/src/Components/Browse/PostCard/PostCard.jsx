@@ -11,6 +11,7 @@ class PostCard extends React.Component {
   }
 
   render() {
+    console.log('postcard', this.props)
     const post = this.props.post;
     const { username, avatar } = this.props;
     // handling date display
@@ -26,7 +27,7 @@ class PostCard extends React.Component {
     }
     return(
       <div className="post-card">
-        <Link to={{pathname: `post`, id: post._id, username: username, avatar: avatar}}>
+        <Link to={{pathname: `/post`, id: post._id, username: username, avatar: avatar}}>
         <div className="post-card-user">
           <img className="post-card-avatar" src={post.author.avatar}></img>
           {/* INSERT USER PROFILE LINK BELOW */}

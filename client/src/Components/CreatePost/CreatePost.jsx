@@ -5,7 +5,7 @@ import DropDownRestaurant from './DropDownRestaurant.jsx'
 import Home from '../Home/Home.jsx'
 import NavBar from '../Navbar/Navbar.jsx'
 import axios from 'axios'
-import { Route, Link, BrowserRouter as Router } from "react-router-dom"
+import { Route, Link, BrowserRouter as Router, Redirect } from "react-router-dom"
 
 
 class CreatePost extends React.Component {
@@ -20,7 +20,8 @@ class CreatePost extends React.Component {
       location: "",
       image: null,
       file: null,
-      recommended: true
+      recommended: true, 
+      redirect: false
     };
     this.handleChange = this.handleChange.bind(this);
     this.handlePickRestaurant = this.handlePickRestaurant.bind(this);
@@ -98,7 +99,7 @@ class CreatePost extends React.Component {
     axios
       .post('/writepost', { restaurant: restaurant, title: title, text: text, image: response.data.url, author: { username: this.props.location.state.username, avatar:this.props.location.state.avatar}, recommend: recommend, createdAt: createdAt} )
       .then(() => {
-        console.log('Succesfully posted')
+        this.setState({redirect: true})
       })
       .catch(err => console.log('Error getting', err))
     this.setState({
@@ -114,6 +115,12 @@ class CreatePost extends React.Component {
 
 
   render() {
+    const { redirect } = this.state;
+    const { username, avatar } = this.props.location.state;
+    if(redirect){
+      return <Redirect to={{pathname: `/follow/${username}`, currentUser: username, currentAvatar: avatar }}/>
+    }
+
     var style1 = {
       position: "relative",
       right: "130px"
