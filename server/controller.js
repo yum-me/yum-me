@@ -207,9 +207,10 @@ module.exports = {
   },
   //Follow a user, /user/follow
   followUser: (req, res) => {
+    console.log(req.body)
     const { username, followUser } = req.body;
     User.findOneAndUpdate({username: followUser}, {$inc: {followers: 1}})
-    .then(() => User.findOneAndUpdate(username, {$push: {'following': followUser}}))
+    .then(() => User.findOneAndUpdate({username: username}, {$push: {'following': followUser}}))
     .then(response => res.status(200).send(response))
     .catch(err => res.status(404).send('Error with followUser', err))
   },
@@ -223,6 +224,7 @@ module.exports = {
   },
   //Check if the user is following a different member /user/follow
   checkFollow: (req, res) => {
+    console.log(req.query)
     const { username, followUser} = req.query;
     User.find({username})
     .then(data => {

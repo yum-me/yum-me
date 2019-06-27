@@ -51,7 +51,7 @@ class Feed extends React.Component {
     const followingNum = following ? following.length : null;
     const feedSection = this.state.feed.length > 0 ? 
       <div className="feed-post-main">
-        {feed.map((item, index) => <FeedPost item={item} key={index}/>)}
+        {feed.map((item, index) => <FeedPost item={item} key={index} currentUser={this.props.location.state.username} currentAvatar={this.props.location.state.avatar}/>)}
       </div> : 
       <div className="feed-post-main">
         <div className="feed-no-feed">
