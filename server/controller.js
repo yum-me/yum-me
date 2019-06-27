@@ -224,7 +224,6 @@ module.exports = {
   },
   //Check if the user is following a different member /user/follow
   checkFollow: (req, res) => {
-    console.log(req.query)
     const { username, followUser} = req.query;
     User.find({username})
     .then(data => {
