@@ -26,7 +26,8 @@ class ShowPost extends React.Component {
   }
 
   fetchOnePost () {
-    axios.get('/post', {params: {_id: '5d14205ae7946082e5f921c6'}})
+    const { id } = this.props.location;
+    axios.get('/post', {params: {_id: id}})
     .then(({data}) => this.setState({post: data[0]}))
     .then(() => {
       return this.state.post.comments.sort(function(a, b) {
@@ -47,21 +48,23 @@ class ShowPost extends React.Component {
 
   handleSubmit (event) {
     const { text } = this.state;
+    const { id } = this.props.location;
     event.preventDefault()
-    axios.post('/comment', {text}, {params: {_id: '5d14205ae7946082e5f921c6'}})
+    axios.post('/comment', {text}, {params: {_id: id}})
     .then(() => this.fetchOnePost())
     .catch(() => console.error('Error with adding comment'))
     
   }
   
   handleLikePost () {
+    const { id } = this.props.location;
     this.setState({like: !this.state.like}, () => {
       if(this.state.like) {
-        axios.post('/post/like', {_id: '5d14205ae7946082e5f921c6'})
+        axios.post('/post/like', {_id: id})
         .then(() => this.fetchOnePost())
         .catch(() => console.error('Error with liking post'));
       } else {
-        axios.post('/post/unlike', {_id: '5d14205ae7946082e5f921c6'})
+        axios.post('/post/unlike', {_id: id})
         .then(() => this.fetchOnePost())
         .catch(() => console.error('Error with unliking post'));
       }
@@ -76,7 +79,7 @@ class ShowPost extends React.Component {
       <img className="post-recommend-img" src="https://res.cloudinary.com/kjhogan/image/upload/v1536097829/happy_dbmo3c.png"></img> :
       <img className="post-recommend-img" src="https://res.cloudinary.com/kjhogan/image/upload/v1536097829/sad_fcfqhu.png"></img>
     const likeIcon = this.state.like ? <FaThumbsUp className="post-like-icon-activated" /> : <FaThumbsUp className="post-like-icon" />;
-    
+    console.log('Show post', this.props)
     return (
       <div> 
         <NavBar />
