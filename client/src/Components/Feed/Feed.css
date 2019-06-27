@@ -15,11 +15,12 @@
   background: white;
   border-radius: 4px;  
   position: fixed;
+  cursor: default;
 }
 
 .user-info-inner h4 {
   font-weight: bold;
-  color: #3b1360;
+  color: rgb(37, 37, 37);
   font-size: 1.1em;
 }
 

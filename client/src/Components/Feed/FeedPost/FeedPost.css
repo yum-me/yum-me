@@ -11,6 +11,7 @@
   margin-right: 20px;
   border-radius: 50%;
   vertical-align: middle;
+  border: 1px solid rgba(0,0,0,0.2);
 }
 
 .post-image {
@@ -23,6 +24,7 @@
   padding: 15px;
   display: flex;
   align-items: center;
+  cursor: default;
 }
 
 .feed-post-user-stripe a {
