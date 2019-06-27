@@ -64,7 +64,7 @@
     height: 200px;
     width: 500px;
     border: none;
-    background: #e8daae;
+    background: rgb(240, 241, 242);
     position: absolute;
     box-shadow: 0 12px 24px rgba(0,0,0,.1);
 }
