@@ -3,6 +3,7 @@ import Navbar from '../Navbar/Navbar.jsx';
 import FeedPost from './FeedPost/FeedPost.jsx';
 import './Feed.css';
 import axios from 'axios';
+import { Link } from 'react-router-dom';
 
 class Feed extends React.Component {
   constructor(props) {
@@ -45,6 +46,7 @@ class Feed extends React.Component {
     const { firstName, lastName, username, avatar, following, followers} = this.state.userInfo;
     const { feed } = this.state;
     const followingNum = following ? following.length : null;
+    console.log(this.props)
     return (
       <div>
         <Navbar />

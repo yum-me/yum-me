@@ -2,6 +2,7 @@ import React from 'react';
 import './FeedPost.css';
 import moment from 'moment';
 import { FaCommentAlt, FaThumbsUp } from 'react-icons/fa';
+import { Link } from 'react-router-dom';
 
 const FeedPost = props => {
   const { author, comments, image, likes, recommend, restaurant, text, title, createdAt, _id } = props.item;
@@ -16,7 +17,9 @@ const FeedPost = props => {
           <img className="post-avatar" src={author.avatar}></img>
           <div>
             {/* INSERT USER PROFILE LINK BELOW */}
-            <a href="#">{author.username}</a>
+            <Link to={{pathname: `/follow/${author.username}`, state: 'username'}} >
+              <a href="#">{author.username}</a>
+            </Link>
             <p><strong>Restaurant: </strong>{restaurant}</p>
           </div>
           <div className="recommend-img-container">{recommendImage}</div>          
