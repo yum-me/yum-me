@@ -115,7 +115,7 @@ class ShowPost extends React.Component {
             <div className="show-post-comments-container">
               <div className="show-post-comments-info">
                 <p className="show-post-restaurant"><strong><span>Restaurant:</span></strong> {restaurant}</p>
-                <p>(Address here?)</p>
+                {/* <p>(Address here?)</p> */}
                 <div className="post-comments-likes">
                   <p><span><FaCommentAlt className="post-comment-icon"/></span> {comments ? comments.length : ''}</p>
                   <p><span onClick={this.handleLikePost}>{likeIcon}</span> {likes}</p>
