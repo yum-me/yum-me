@@ -29,14 +29,10 @@ class ShowPost extends React.Component {
   fetchOnePost () {
     const { id } = this.props.location;
     axios.get('/post', {params: {_id: id}})
-    .then(({data}) => this.setState({post: data[0]}))
-    .then(() => {
-      return this.state.post.comments.sort(function(a, b) {
+    .then(({data}) => this.setState({post: data[0]}, () => {
+      this.state.post.comments.sort(function(a, b) {
         return new Date(a.createdAt) - new Date(b.createdAt);
-      });
-    })
-    .then(data => this.setState({
-      comments: data
+      })
     }))
     .catch(() => console.error('Error with fetching one post'))
   }
@@ -127,9 +123,7 @@ class ShowPost extends React.Component {
                   <button type="submit" onClick={this.handleSubmit}><FaTelegramPlane /></button>
                 </form>
               </div>
-              <div className="show-post-comments">
-                {commentSection}
-              </div>
+              {commentSection}
             </div>
           </div>
         </div>
