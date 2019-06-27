@@ -73,7 +73,7 @@ module.exports = {
               res.status(404).send('Password is wrong')
             }
             if (isMatch) {
-              res.status(200).send(' Succesfully Login')
+              res.status(200).send(user.username)
             } else {
               res.status(404).send('Wrong email or password')
             }

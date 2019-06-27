@@ -32,8 +32,6 @@ class Login extends React.Component {
     axios
         .get('/login', {params: {email, password}})
         .then((data) => {
-          // console.log('Succesfully Login')
-
          this.setState({
           username: data.data,
            redirect: true  
@@ -47,7 +45,6 @@ class Login extends React.Component {
   render() {
     const {redirect, username} = this.state;
     if(redirect){
-      console.log(username)
       return <Redirect to={{pathname: '/feed', state: { username:username }}}/>
     }
     return (
