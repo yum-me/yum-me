@@ -16,6 +16,8 @@ module.exports = {
     const { username, firstName, lastName, email, password, password2, avatar, location } = req.body;
     console.log(req.body)
     let errors = [];
+    let following = [];
+    let followers = 0;
 
     if (!username || !firstName || !lastName || !email || !password || !password2 || !avatar, !location) {
       errors.push({ msg: 'Please enter all fields' });
@@ -43,7 +45,9 @@ module.exports = {
             email,
             password,
             location,
-            avatar
+            avatar,
+            followers,
+            following
           });
 
           bcrypt.genSalt(10, (err, salt) => {
