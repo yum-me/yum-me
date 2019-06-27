@@ -3,6 +3,7 @@ import axios from 'axios';
 import Navbar from '../Navbar/Navbar.jsx';
 import PostCard from './PostCard/PostCard.jsx';
 import './Browse.css';
+import { Link } from 'react-router-dom';
 
 class Browse extends React.Component {
   constructor(props) {
@@ -26,9 +27,10 @@ class Browse extends React.Component {
   }
 
   render() {
+    const { username, avatar } = this.props.location.state;
     return(
       <div>
-        <Navbar />
+        <Navbar username={username} avatar={avatar}/>
         <h1 className="browse-h1">Recent Posts</h1>
         <div className="browse-wrap">
           <div className="four-col-grid">

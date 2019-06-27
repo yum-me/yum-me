@@ -79,7 +79,6 @@ class ShowPost extends React.Component {
       <img className="post-recommend-img" src="https://res.cloudinary.com/kjhogan/image/upload/v1536097829/happy_dbmo3c.png"></img> :
       <img className="post-recommend-img" src="https://res.cloudinary.com/kjhogan/image/upload/v1536097829/sad_fcfqhu.png"></img>
     const likeIcon = this.state.like ? <FaThumbsUp className="post-like-icon-activated" /> : <FaThumbsUp className="post-like-icon" />;
-    console.log('Show post', this.props)
     return (
       <div> 
         <NavBar />
