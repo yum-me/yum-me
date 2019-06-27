@@ -16,7 +16,7 @@ const FeedPost = props => {
           <img className="post-avatar" src={author.avatar}></img>
           <div>
             {/* INSERT USER PROFILE LINK BELOW */}
-            <a href="#">{author.username}</a>
+            <h3>{author.username}</h3>
             <p><strong>Restaurant: </strong>{restaurant}</p>
           </div>
           <div className="recommend-img-container">{recommendImage}</div>          
