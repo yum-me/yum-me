@@ -16,7 +16,8 @@ class Login extends React.Component {
       email: "",
       password: "",
       redirect: false, 
-      username: ''
+      username: '',
+      avatar: ""
     }
     this.handleChange = this.handleChange.bind(this);
     this.submit = this.submit.bind(this);
@@ -32,8 +33,12 @@ class Login extends React.Component {
     axios
         .get('/login', {params: {email, password}})
         .then((data) => {
+
+          // console.log('Succesfully Login')
+          console.log('userInfo',data.data)
          this.setState({
-          username: data.data,
+          username: data.data.username,
+          avatar: data.data.avatar,
            redirect: true  
          })
         })
@@ -43,9 +48,11 @@ class Login extends React.Component {
 
 
   render() {
-    const {redirect, username} = this.state;
+    const {redirect, username, avatar} = this.state;
     if(redirect){
-      return <Redirect to={{pathname: '/feed', state: { username:username }}}/>
+      console.log(username)
+      return <Redirect to={{pathname: '/feed', state: { username:username, avatar: avatar }}}/>
+
     }
     return (
       <div>
