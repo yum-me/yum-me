@@ -26,9 +26,10 @@ class Browse extends React.Component {
   }
 
   render() {
+    const { username, avatar } = this.props.location.state;
     return(
       <div>
-        <Navbar />
+        <Navbar username={username} avatar={avatar}/>
         <h1 className="browse-h1">Recent Posts</h1>
         <div className="browse-wrap">
           <div className="four-col-grid">
