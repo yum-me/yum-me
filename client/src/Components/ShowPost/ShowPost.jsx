@@ -5,6 +5,7 @@ import axios from 'axios';
 import './ShowPost.css';
 import moment from 'moment';
 import { FaCommentAlt, FaThumbsUp, FaTelegramPlane } from 'react-icons/fa';
+import { Link } from 'react-router-dom';
 
 class ShowPost extends React.Component {
   constructor(props) {
@@ -72,6 +73,7 @@ class ShowPost extends React.Component {
   }
 
   render () {
+    const { username, avatar } = this.props.location;
     const { author, createdAt, image, likes, recommend, restaurant, text, title } = this.state.post;
     const { comments } = this.state;
     const postAuthor = author ? author.username : null;
@@ -81,7 +83,7 @@ class ShowPost extends React.Component {
     const likeIcon = this.state.like ? <FaThumbsUp className="post-like-icon-activated" /> : <FaThumbsUp className="post-like-icon" />;
     return (
       <div> 
-        <NavBar />
+        <NavBar username={username} avatar={avatar}/>
         <div className="show-post-container">
           <div className="show-post-main">
             <div className="show-post-post-container">
@@ -94,7 +96,9 @@ class ShowPost extends React.Component {
                 <div className="show-post-user">
                   <img className="show-post-avatar" src={author ? author.avatar : ''} />
                   <div>
+                  <Link to={{pathname: `/follow/${postAuthor}`, state: 'username'}} >
                     <h3>{postAuthor}</h3>
+                    </Link>
                     <p>{moment(createdAt).fromNow()}</p>
                   </div>
                 </div>
