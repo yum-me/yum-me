@@ -1,17 +1,18 @@
-.feed-main {
+.user-user-main {
   display: flex;
   padding-top: 70px;
 }
 
-.user-info {
- width: 420px;
+.user-user-info {
+  flex: 2;
+  width: 500px;
 }
 
-.user-info-inner {
+.user-user-info-inner {
   border: 1px solid rgba(0,0,0,0.2);
   margin: 20px 0 0 40px;
-  width: 378px;
-  height: 200px;
+  width: 500px;
+  height: 500px;
   background: white;
   border-radius: 4px;  
   position: fixed;
@@ -23,33 +24,31 @@
   font-size: 1.1em;
 }
 
-.feed-post-main {
-  flex: 2;
+.user-post-main {
+  flex: 3;
   margin-top: 20px;
   padding-right: 5%;
   padding-left: 2%;
 }
 
-.avatar-photo {
-  width: 120px;
-  margin-top: -60px;
-  margin-left: 20px;
+.user-avatar-photo {
+  width: 200px;
+  margin: -75px auto 0 auto;
   border-radius: 50%;
-  display: inline-block;
+  display: block;
 }
 
-.feed-stripe {
-  height: 75px;
+.user-feed-stripe {
+  height: 100px;
   border-radius: 4px 4px 0 0;
   background-color: #3b1360;
 }
 
-.feed-name {
-  display: inline-block;
+/* .user-feed-name {
   position: relative;
   left: 10px;
-  /* top: -10px; */
-}
+  top: -10px;
+} */
 
 .feed-name p {
   color: rgba(0,0,0,0.5);

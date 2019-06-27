@@ -76,12 +76,12 @@ class FollowFeed extends React.Component {
     return (
       <div>
         <Navbar />
-        <div className="feed-main">
-          <div className="user-info">
-            <div className="user-info-inner">
-              <div className="feed-stripe"></div>
-              <img className="avatar-photo" src={avatar} />
-              <div className="feed-name">
+        <div className="user-user-main">
+          <div className="user-user-info">
+            <div className="user-user-info-inner">
+              <div className="user-feed-stripe"></div>
+              <img className="user-avatar-photo" src={avatar} />
+              <div className="user-feed-name">
                 <h4>{firstName} {lastName}</h4>
                 <p>@{username}</p>
                 <p>{location}</p>
@@ -95,7 +95,7 @@ class FollowFeed extends React.Component {
               </div>
             </div>
           </div>
-          <div className="feed-post-main">
+          <div className="user-post-main">
             {feed.map((item, index) => <FollowPost item={item} key={index}/>)}
           </div>
         </div>
