@@ -198,10 +198,10 @@ module.exports = {
   },
   //Adding a comment to a post, /comment
   addComment: (req, res) => {
-    const { _id } = req.query;
+    const { _id, username, avatar } = req.query;
     const { text } = req.body; 
-    Comment.Comment.create({text: text, 'author.username': 'ufukmehmetoglu', 'author.avatar': 'https://avatars1.githubusercontent.com/u/43357768?s=460&v=4', createdAt: new Date()})
-    .then(comment => Post.findOneAndUpdate(_id, {$push: {'comments': comment}}))
+    Comment.Comment.create({text: text, 'author.username': username, 'author.avatar': avatar, createdAt: new Date()})
+    .then(comment => Post.findOneAndUpdate({_id: _id}, {$push: {'comments': comment}}))
     .then(response => res.status(200).send(response))
     .catch(err => {res.status(400).send('Error adding comment', err)});
   },
