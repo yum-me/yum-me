@@ -6,8 +6,9 @@ import ShowPost from './Components/ShowPost/ShowPost.jsx';
 import NavBar from './Components/Navbar/Navbar.jsx'
 import FollowFeed from './Components/FollowFeed/FollowFeed.jsx'
 import Login from './Components/User/Login.jsx';
-import Register from './Components/User/Register.jsx'
-import CreatePost from './Components/CreatePost/CreatePost.jsx'
+import Register from './Components/User/Register.jsx';
+import CreatePost from './Components/CreatePost/CreatePost.jsx';
+import Search from './Components/Search/Search.jsx';
 
 
 
@@ -31,6 +32,7 @@ class AppRouter extends React.Component {
           <Route path="/createpost" component={CreatePost} />
           <Route path="/browse" component={Browse} />
           <Route path="/register" component={Register} />
+          <Route path="/search/:term" component={Search} />
         </div>
       </Router>
     );
