@@ -22,7 +22,6 @@ class Navbar extends React.Component {
   }
 
   handleChange(e) {
-    console.log(this.state.term);
     this.setState({
       term: e.target.value
     });

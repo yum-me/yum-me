@@ -48,10 +48,10 @@ class ShowPost extends React.Component {
   }
 
   handleSubmit (event) {
+    event.preventDefault()
     const { text } = this.state;
     const { id } = this.props.location;
     const { username, avatar } = this.props.location;
-    event.preventDefault()
     axios.post('/comment', {text}, {params: {_id: id, username: username, avatar: avatar}})
     .then(() => this.fetchOnePost())
     .catch(() => console.error('Error with adding comment'))
@@ -94,7 +94,7 @@ class ShowPost extends React.Component {
     console.log(username.length);
     const commentBox = username.length > 0 ? 
       <form>
-        <textarea className="comment-input" name="text" placeholder="Write a comment..." onChange={this.handleChange}/>
+        <textarea className="comment-input" id="comment-input" name="text" placeholder="Write a comment..." onChange={this.handleChange}/>
         <button type="submit" onClick={this.handleSubmit}><FaTelegramPlane /></button>
       </form> :
       <div className="cannot-comment">
