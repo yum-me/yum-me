@@ -86,7 +86,6 @@ class Navbar extends React.Component {
       this.setState({
         redirect: false
       });
-      console.log("state", this.state);
       if(this.state.username) {
         return <Redirect to={{pathname: `/search/${this.state.term}`, currentUser: this.state.username, currentAvatar: this.state.avatar }}/>
       } else {

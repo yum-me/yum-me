@@ -17,6 +17,7 @@ class Search extends React.Component {
   }
 
   componentDidMount() {
+    console.log("search props", this.props);
     this.handleSearch();
   }
 
@@ -56,7 +57,7 @@ class Search extends React.Component {
     let posts = this.state.posts.length === 1 ? "post" : "posts";
     return(
       <div>
-        <Navbar />
+        <Navbar username={currentUser} avatar={currentAvatar} />
         <div className="search">
           <h1>Search Results for "{this.state.term}"</h1>
           <div className="search-user-container">
