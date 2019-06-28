@@ -92,9 +92,12 @@ class Register extends React.Component {
             </div>
             <div>
               <a className="submitRegister"  href="#">
-              <button className="submitRegisterBtn" type="submit">sign up</button>
-              {/* <input className="submitRegister input" type="submit" value="sign up" /> */}
+                <button className="submitRegisterBtn" type="submit">sign up</button>
               </a>              
+              <p className="hasAccount">Already have an account?</p>
+              <Link to={{pathname: `/login`, state: {username: '', avatar: ''}}}>
+                <p className="loginFromSignup"><strong>Log In</strong></p>
+              </Link>
             </div>
           </form>
         </div>

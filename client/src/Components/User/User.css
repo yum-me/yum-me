@@ -14,7 +14,7 @@ input{
 .mainRegister {
     margin: 0 auto;
     width: 500px;
-    height: 600px;
+    height: 630px;
     padding: 30px;
     background-color: white;
     border-radius: 4px;
@@ -109,8 +109,20 @@ input.avatarInput {
     border-radius: 10px;
     color: white;
     font-size: 1.1em;
+    margin-bottom: 20px;
 }
 .submitRegisterBtn:hover {
     cursor: pointer;
     background-color: #6923aa;
+}
+.mainLogin p, .hasAccount, .loginFromSignup {
+    text-align: center;
+}
+
+.signUpFromLogin, .loginFromSignup {
+    color: #3b1360;
+}
+
+.signUpFromLogin:hover, .loginFromSignup:hover {
+    color: #6923aa;
 }

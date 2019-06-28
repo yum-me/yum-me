@@ -70,6 +70,10 @@ class Login extends React.Component {
                 </a>                
               </div>
             </form>
+            <p>Don't have an account?</p>
+            <Link to={{pathname: `/register`, state: {username: '', avatar: ''}}}>
+              <p className="signUpFromLogin"><strong>Sign Up</strong></p>
+            </Link>
           </div>
         </div>
       </div>

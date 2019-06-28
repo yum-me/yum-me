@@ -80,9 +80,14 @@ class FollowFeed extends React.Component {
     const followingNum = following ? following.length : null;
     const { followStatus } = this.state;
     const { currentUser, currentAvatar } = this.props.location;
-    const followBtn = followStatus ? 
+    let followBtn;
+    if(currentUser.length > 0) {
+      followBtn = followStatus ? 
       <button onClick={this.handleUnfollowUser}>unfollow</button> : 
       <button onClick={this.handleFollowUser}>follow</button>
+    } else {
+      followBtn = null;
+    }
     const userPostSection = this.state.feed.length > 0 ? 
       <div className="two-col-grid">
         {feed.map((item, index) => <div className="grid-item hvr-grow"><FollowPost item={item} key={index} username={currentUser} avatar={currentAvatar}/></div>)}

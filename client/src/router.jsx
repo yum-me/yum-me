@@ -9,6 +9,7 @@ import Login from './Components/User/Login.jsx';
 import Register from './Components/User/Register.jsx';
 import CreatePost from './Components/CreatePost/CreatePost.jsx';
 import Search from './Components/Search/Search.jsx';
+import Home from './Components/Home/Home.jsx';
 
 
 
@@ -34,6 +35,7 @@ class AppRouter extends React.Component {
           <Route path="/register" component={Register} />
           <Route path="/login" component={Login} />
           <Route path="/search/:term" component={Search} />
+          <Route path="/home" component={Home} />        
         </div>
       </Router>
     );
