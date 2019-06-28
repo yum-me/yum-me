@@ -23,7 +23,7 @@ const Home = () => {
           </Link>   
           <Link to="/login">
             <a href="#">
-                <button className="button-foil">join</button>
+                <button className="button-foil">log in</button>
             </a>
           </Link>
         </div>
