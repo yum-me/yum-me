@@ -3,6 +3,7 @@ import axios from 'axios';
 import './UserCard.css';
 import { MdLocationOn } from 'react-icons/md';
 import { FaUsers } from 'react-icons/fa';
+import { Link } from 'react-router-dom';
 
 class UserCard extends React.Component {
   constructor(props) {
@@ -27,8 +28,10 @@ class UserCard extends React.Component {
 
   render() {
     let user = this.props.user;
+    const { currentUser, currentAvatar } = this.props;
     return(
       <div className="user-card">
+        <Link to={{pathname: `/follow/${user.username}`, currentUser: currentUser, currentAvatar: currentAvatar}}>
         <div className="user-card-user">
           <img src={user.avatar}></img>
           <h3>{user.username}</h3>
@@ -50,6 +53,7 @@ class UserCard extends React.Component {
 
           </div>
         </div>
+        </Link>
       </div>
     );
   }

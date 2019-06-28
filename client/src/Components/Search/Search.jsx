@@ -38,17 +38,18 @@ class Search extends React.Component {
   }
 
   render() {
+    const { currentUser, currentAvatar } = this.props.location;
     if(this.props.match.params.term !== this.state.term) {
       this.handleSearch();
     }
     let userList = this.state.users.length === 0 ? <p className="result-p">No users found</p> : 
       this.state.users.map((user, i) => {
-        return <div className="grid-item-five hvr-grow" key={i}><UserCard user={user} /></div>               
+        return <div className="grid-item-five hvr-grow" key={i}><UserCard user={user} currentUser={currentUser} currentAvatar={currentAvatar} /></div>               
       });
 
     let postList = this.state.posts.length === 0 ? <p className="result-p">No posts found</p> :  
       this.state.posts.map((post, i) => {
-        return <div className="grid-item-four hvr-grow" key={i}><PostCard post={post} /></div>               
+        return <div className="grid-item-four hvr-grow" key={i}><PostCard post={post} username={currentUser} avatar={currentAvatar}/></div>               
       });
 
     let users = this.state.users.length === 1 ? "user" : "users";

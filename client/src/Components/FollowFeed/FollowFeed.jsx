@@ -75,7 +75,6 @@ class FollowFeed extends React.Component {
   }
 
   render () {
-    console.log(this.props)
     const { firstName, lastName, username, avatar, following, followers, location } = this.state.userInfo;
     const { feed } = this.state;
     const followingNum = following ? following.length : null;

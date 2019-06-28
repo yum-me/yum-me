@@ -4,7 +4,7 @@ import User from './User.css'
 import axios from 'axios';
 import Login from './Login.jsx'
 import NavBar from '../Navbar/Navbar.jsx'
-import { Route, Link, BrowserRouter as Router } from "react-router-dom"
+import { Route, Link, BrowserRouter as Router, Redirect } from "react-router-dom"
 
 
 class Register extends React.Component {
@@ -19,7 +19,8 @@ class Register extends React.Component {
       password2: "",
       avatar: "",
       file: "",
-      location: ""
+      location: "", 
+      redirect: false
     }
     this.handleChange = this.handleChange.bind(this);
     this.submit = this.submit.bind(this);
@@ -55,13 +56,17 @@ class Register extends React.Component {
     axios 
       .post('/register',{username, firstName, lastName, email, password, password2, avatar: response.data.url, location})
       .then(() => {
-        console.log('Succesfully registered')
+        this.setState({redirect: true})
       })
       .catch(err => console.log(err))
     this.form.reset();
   }
 
   render() {
+    const { redirect } = this.state;
+    if(redirect){
+      return <Redirect to="/"/>
+    }
     return (
     <div>
       <NavBar />
