@@ -26,14 +26,14 @@ class AppRouter extends React.Component {
     return (
       <Router>
         <div>
-          <Route path="/" exact render={() => <Login username={this.state.username} isAuthed={true} />} />
+        <Route path="/" exact component={Home} />
+          <Route path="/login" render={() => <Login username={this.state.username} isAuthed={true} />} />
           <Route path="/feed" component={Feed} />
           <Route path="/follow/:username" component={FollowFeed}/>
           <Route path="/post" component={ShowPost} />
           <Route path="/createpost" component={CreatePost} />
           <Route path="/browse" component={Browse} />
           <Route path="/register" component={Register} />
-          <Route path="/login" component={Login} />
           <Route path="/search/:term" component={Search} />
           <Route path="/home" component={Home} />        
         </div>

@@ -1,5 +1,6 @@
 import React from 'react';
 import './Home.css';
+import  { Link } from 'react-router-dom'
 
 const Home = () => {
   return(
@@ -7,7 +8,7 @@ const Home = () => {
       <div className="landing-container">
         <div className="landing-container-flex">
           <div>
-            <h2 className="landing-h2">welcome to</h2>
+              <h2 className="landing-h2">welcome to</h2>
             <h1 className="landing-h1">yum.me</h1>
           </div>
           <div>
@@ -15,12 +16,16 @@ const Home = () => {
           </div>
         </div>
         <div className="landing-button-container">
-            <a href="/browse">
-                <button className="button-main">see what's new</button>
+          <Link to={{pathname: `/browse`, state: {username: '', avatar: ''}}}>
+            <a href="#">
+              <button className="button-main">see what's new</button>
             </a>
-            <a href="/login">
+          </Link>   
+          <Link to="/login">
+            <a href="#">
                 <button className="button-foil">join</button>
             </a>
+          </Link>
         </div>
       </div>
     </div>
