@@ -69,7 +69,7 @@ class Register extends React.Component {
     }
     return (
     <div>
-      <NavBar />
+      <NavBar username={''} avatar={''}/>
       <div className="mainRegisterContainer">
         <div className="mainRegister">
           <form className="userRegister" onSubmit={this.submit} ref={form => this.form = form}>
