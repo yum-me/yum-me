@@ -11,7 +11,6 @@ class PostCard extends React.Component {
   }
 
   render() {
-    console.log('postcard', this.props)
     const post = this.props.post;
     const { username, avatar } = this.props;
     // handling date display
