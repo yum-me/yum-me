@@ -73,10 +73,16 @@ class Navbar extends React.Component {
     const yummeLink = this.state.username && this.state.username.length > 0 ? 
       <Link to={{pathname: `/feed`, state: {username: this.props.username, avatar: this.props.avatar}}}>
         <a href="#" className="nav-logo">
+          <img src="https://res.cloudinary.com/kjhogan/image/upload/v1561339707/happy_dbmo3c_ihdbmd.png"></img>        
+        </a>
+        <a href="#" className="nav-logo">
           yum.me      
         </a>
       </Link> : 
       <Link to={{pathname: `/home`, state: {username: '', avatar: ''}}}>
+        <a href="#" className="nav-logo">
+          <img src="https://res.cloudinary.com/kjhogan/image/upload/v1561339707/happy_dbmo3c_ihdbmd.png"></img>        
+        </a>
         <a href="#" className="nav-logo">
           yum.me      
         </a>
@@ -99,9 +105,6 @@ class Navbar extends React.Component {
             <FaBars />
           </span>
           <div>
-            <a href="#" className="nav-logo">
-              <img src="https://res.cloudinary.com/kjhogan/image/upload/v1561339707/happy_dbmo3c_ihdbmd.png"></img>        
-            </a>
             {yummeLink}
           </div>
           <div className="nav-search-input-container">
